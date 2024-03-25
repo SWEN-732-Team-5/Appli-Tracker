@@ -8,12 +8,12 @@ const request = require('supertest');
 describe('POST /createjob', () => {
     test('It should create a new job and return job details', async () => {
        const response =await request('http://localhost:8000')
-        .post('/createjob').send({"job_title":"Bloomberg-2","description":"Job application for Software Engineering-2","type":"Full-Time","payment":80})
+        .post('/createjob').send({"job_title":"Microsoft","description":"Job application for Software Engineering-1","type":"Full-Time","payment":800})
         expect(response.status).toBe(200);
-        expect(response.body.job_title).toBe('Bloomberg-2');
-        expect(response.body.description).toBe('Job application for Software Engineering-2');
+        expect(response.body.job_title).toBe('Microsoft');
+        expect(response.body.description).toBe('Job application for Software Engineering-1');
         expect(response.body.type).toBe('Full-Time');
-        expect(response.body.payment).toBe(80);
+        expect(response.body.payment).toBe(800);
        
     });
 });
