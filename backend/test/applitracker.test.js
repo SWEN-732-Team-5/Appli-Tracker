@@ -17,3 +17,16 @@ describe('POST /createjob', () => {
        
     });
 });
+
+describe('POST /createjob', () => {
+    test('It should create a new Co-op and return the create co-op details', async () => {
+       const response =await request('http://localhost:8000')
+        .post('/createjob').send({"job_title":"Apple","description":"Frontend Developer","type":"Co-op","payment":27})
+        expect(response.status).toBe(200);
+        expect(response.body.job_title).toBe('Apple');
+        expect(response.body.description).toBe('Frontend Developer');
+        expect(response.body.type).toBe('Co-op');
+        expect(response.body.payment).toBe(800);
+       
+    });
+});
