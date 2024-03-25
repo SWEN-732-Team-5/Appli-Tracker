@@ -17,13 +17,13 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Install dependencies
+      - name: Install dependencies and run backend server
         run: |
             cd ./backend
             npm install
-      - name: Start backend server
-        run: |
-            pwd
+            node server.js
+            
+
 
     #   - name: Start backend server
     #     working-directory: Appli-Tracker/backend
