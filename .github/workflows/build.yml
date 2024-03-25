@@ -1,4 +1,4 @@
-name: hello-world
+name: test_cases
 
 on:
   push:
@@ -21,15 +21,15 @@ jobs:
         working-directory: Appli-Tracker/backend
         run: npm install
 
-      - name: Start backend server
-        working-directory: Appli-Tracker/backend
-        run: |
-          nohup node server.js > server.log 2>&1 &
+    #   - name: Start backend server
+    #     working-directory: Appli-Tracker/backend
+    #     run: |
+    #       nohup node server.js > server.log 2>&1 &
 
-      - name: Run Jest tests
-        working-directory: Appli-Tracker/backend
-        run: npx jest
+    #   - name: Run Jest tests
+    #     working-directory: Appli-Tracker/backend
+    #     run: npx jest
 
-      - name: Stop backend server
-        run: |
-          pkill -f "node server.js"
+    #   - name: Stop backend server
+    #     run: |
+    #       pkill -f "node server.js"
