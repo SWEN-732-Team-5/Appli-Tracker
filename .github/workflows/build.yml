@@ -18,8 +18,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Install dependencies
-        working-directory: Appli-Tracker/backend
-        run: npm install
+        run: pwd
 
     #   - name: Start backend server
     #     working-directory: Appli-Tracker/backend
