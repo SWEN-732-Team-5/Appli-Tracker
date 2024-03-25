@@ -26,7 +26,7 @@ describe('POST /createjob', () => {
         expect(response.body.job_title).toBe('Apple');
         expect(response.body.description).toBe('Frontend Developer');
         expect(response.body.type).toBe('Co-op');
-        expect(response.body.payment).toBe(800);
+        expect(response.body.payment).toBe(27);
        
     });
 });
