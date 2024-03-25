@@ -26,6 +26,10 @@ jobs:
             cd ./backend
             node server.js &
             echo 'Running Test cases'
+      - name: Run Test
+        run: |
+            cd ./backend
+            npx jest
 
 
 
