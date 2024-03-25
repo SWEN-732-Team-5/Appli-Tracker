@@ -20,6 +20,9 @@ jobs:
       - name: Install dependencies
         run: |
             cd ./backend
+            npm install
+      - name: Start backend server
+        run: |
             pwd
 
     #   - name: Start backend server
