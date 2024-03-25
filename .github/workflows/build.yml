@@ -22,7 +22,9 @@ jobs:
             cd ./backend
             npm install
             node server.js
-            
+            npx jest
+            pkill -f server.js
+
 
 
     #   - name: Start backend server
