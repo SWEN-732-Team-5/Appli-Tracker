@@ -22,6 +22,7 @@ jobs:
             cd ./backend
             npm install
             node server.js
+            echo 'Running Test cases'
             npx jest
             pkill -f server.js
 
