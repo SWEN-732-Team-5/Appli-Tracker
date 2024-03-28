@@ -16,8 +16,25 @@ const JobCreationSchema = mongoose.Schema(
         payment: {
             type: Number,
             required: true
+        },
+        applied_date : {
+            type: String
+        },
+        location : {
+            type: String
+        },
+        priority : {
+            type: String
+        },
+        stage : {
+            type: String,
+            default: 'Applied'
+        },
+        weblink : {
+            type: String
         }
+
     }
 )
 
-module.exports = mongoose.model('Job_Data',JobCreationSchema)
+module.exports = mongoose.model('Job_Data_2',JobCreationSchema)

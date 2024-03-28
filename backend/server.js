@@ -15,6 +15,9 @@ app.use(express.json())
 app.use(Cors())
 
 const jobCreateController = require('./controllers/jobCreationController');
+const jobSearchController = require('./controllers/jobSearchController');
+const assignPriorityController = require('./controllers/assignPriorityController');
+const updateStageController = require('./controllers/updateStageController');
 
 
 mongoose.connect(connectionURL)
@@ -34,6 +37,24 @@ app.post('/createjob', async (req, response) => {
     // const savedJob = await newJob.save();
     response.status(200).send(savedJob)
    
+})
+
+app.get('/searchjob', async (req, response) => {
+
+    const searchedJobs = await jobSearchController(req.body);
+    response.status(200).send(searchedJobs)
+})
+
+app.post('/assign_priority', async (req, response) => {
+
+    const updatedJob = await assignPriorityController(req.body);
+    response.status(200).send(updatedJob)
+})
+
+app.post('/update_stage', async (req, response) => {
+
+    const updatedJob = await updateStageController(req.body);
+    response.status(200).send(updatedJob)
 })
 
 
