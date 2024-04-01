@@ -7,7 +7,7 @@ import SignUp from './SignUp';
 import Dashboards from './Dashboards';
 
 function App() {
-
+// App.js file
   return (
       <div className="App">
         <Router>
