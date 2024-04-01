@@ -7,7 +7,7 @@ import SignUp from './SignUp';
 import Dashboards from './Dashboards';
 
 function App() {
-  //  App.js file added
+  //  App.js file added ok
   return (
       <div className="App">
         <Router>
