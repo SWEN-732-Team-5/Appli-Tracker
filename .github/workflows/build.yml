@@ -21,17 +21,20 @@ jobs:
         run: |
             cd ./backend
             npm install
-      - name: Start backend server
-        run: |
-            cd ./backend
-            node server.js &
-            echo 'Running Test cases'
-      - name: Run Test
+      - name: Running Unit Test Cases
         run: |
             cd ./backend
             npx jest
-      - name: Terminate server
-        run: pkill -f server.js
+      - name: Show Code Coverage
+        run: |
+            cd ./backend
+            npx jest --coverage --verbose
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v4.0.1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          slug: SWEN-732-Team-5/Appli-Tracker
+
 
 
 
