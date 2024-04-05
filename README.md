@@ -27,21 +27,43 @@ This design document encompasses comprehensive details regarding the 'Appli Trac
 
 ## Minimum Requirements
 
-[Environmental requirements, such as ]
+[NPM Version: 10.5.0]
 
-[JDK 21]
-
-[Apache Maven 3.9.2]
+[Node v21.7.1]
 
 
 ## How to run it
 
-[How to run your project]
+* Clone the git repository `https://github.com/SWEN-732-Team-5/Appli-Tracker.git`
+* Type `cd backend`
+* Run `npm install` to install dependencies
+* Run `npx jest` to run all the Unit Test Cases
 
-[DEMO screenshot(s)]
+![Alt text](./backend/Screenshots/T1.png)
 
 ## Testing
 
-[Description of your project's testing]
+# MVPs covered for Unit Test:
 
-[Testing screenshot(s)]
+* Job creation : Users can create new job entries based on Co-ops or Full Time with a title, description and pay. When API endpoint ‘/createjob’ is called, job details are passed in the request body which comprises 'job_title','description', 'type' and 'payment'. This data is saved in the Mongodb database. If successfully saved it returns status code as 200 and also returns the json of recently created Job. Here, we are testing whether response status, job_title, description, type and payment matches with a recently created job.
+[Link](https://github.com/SWEN-732-Team-5/Appli-Tracker/blob/dev-v2/backend/__test__/controllers/jobCreationController.test.js)
+
+* Priority levels : Users can assign priority levels (e.g., high, medium, low) to the Job. Test case tests for assigning priority to the job. Here we are assigning priority as 'High' for a particular Job which is distinguished by 'JobID', the updated Job should also have priority as High.
+[Link](https://github.com/SWEN-732-Team-5/Appli-Tracker/blob/dev-v2/backend/__test__/controllers/assignPriorityController.test.js)
+
+* Search functionality : Users can search a job by company name, applied date, or category. Test case tests for searching a Job w.r.t location, if a user wants to search all the jobs he/she applied based on ‘Rochester’ location, here we are testing whether jobs returned by API is ‘Rochester’ based only. Test case also tests for searching a Job w.r.t date, if the user wants the Job data based on the date which he/she has applied. Here we are testing whether all jobs searched w.r.t 02/12/2024 date matches or not. 
+[Link](https://github.com/SWEN-732-Team-5/Appli-Tracker/blob/dev-v2/backend/__test__/controllers/jobSearchController.test.js)
+
+* Tracking : Based on Recruitments reply users can edit and view the application status which makes it easier for tracking. Test case tests for updating a status or stage of a Job as a 'Interview'. Based on the recruiters response, if a user wants to update the status of a particular Job, he/she can update the stage. Here we are testing whether the updated stage is an Interview.
+[Link](https://github.com/SWEN-732-Team-5/Appli-Tracker/blob/dev-v2/backend/__test__/controllers/updateStageController.test.js)
+
+* Dashboard : The dashboard test case for job applications focuses on assessing jobs applied for within a specified week. By providing start_date and end_date parameters, this test identifies and returns a concise list of jobs applied to during the designated time frame. Ensuring accuracy and efficiency, this test aids in validating the functionality of the dashboard's job application feature, offering valuable insights into user activity and system performance.
+[Link](https://github.com/SWEN-732-Team-5/Appli-Tracker/blob/dev-v2/backend/__test__/controllers/weeklyDashboardController.test.js)
+
+
+* Clone the git repository `https://github.com/SWEN-732-Team-5/Appli-Tracker.git`
+* Type `cd backend`
+* Run `npm install` to install dependencies
+* Run `npx jest` to run all the Unit Test Cases
+
+![Alt text](./backend/Screenshots/T1.png)
