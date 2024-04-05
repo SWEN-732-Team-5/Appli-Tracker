@@ -22,7 +22,7 @@ Our project Titled 'Appli Tracker' is an web based software which helps in creat
 
 This design document encompasses comprehensive details regarding the 'Appli Tracker' project developed by Team Group5. It begins with team information, listing members contributing to the project. The executive summary succinctly outlines the project's objectives, emphasizing its web-based nature for job creation, tracking, and scheduling. Requirements are meticulously defined, with a focus on the Minimum Viable Product (MVP) features ranging from user authentication to data export capabilities. Architecture and Design sections delve into the system's layered architecture, illustrated through diagrams depicting software architecture, use cases, and class structures. Each aspect is meticulously explained, from user management to notification systems, ensuring a clear understanding of the system's functionality and design principles.
 
-[A link to the project's design document]
+[DesignDoc.md](https://github.com/SWEN-732-Team-5/Appli-Tracker/blob/dev-v2/docs/DesignDoc.md)
 
 
 ## Minimum Requirements
@@ -43,7 +43,7 @@ This design document encompasses comprehensive details regarding the 'Appli Trac
 
 ## Testing
 
-# MVPs covered for Unit Test:
+## MVPs covered for Unit Test:
 
 1. Priority levels : Users can assign priority levels (e.g., high, medium, low) to the Job. Test case tests for assigning priority to the job. Here we are assigning priority as 'High' for a particular Job which is distinguished by 'JobID', the updated Job should also have priority as High.
 [Link](https://github.com/SWEN-732-Team-5/Appli-Tracker/blob/dev-v2/backend/__test__/controllers/assignPriorityController.test.js)
