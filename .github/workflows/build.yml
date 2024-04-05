@@ -21,17 +21,15 @@ jobs:
         run: |
             cd ./backend
             npm install
-      - name: Start backend server
-        run: |
-            cd ./backend
-            node server.js &
-            echo 'Running Test cases'
-      - name: Run Test
+      - name: Running Unit Test Cases
         run: |
             cd ./backend
             npx jest
-      - name: Terminate server
-        run: pkill -f server.js
+      - name: Show Code Coverage
+        run: |
+            cd ./backend
+            npx jest --coverage --verbose
+
 
 
 
