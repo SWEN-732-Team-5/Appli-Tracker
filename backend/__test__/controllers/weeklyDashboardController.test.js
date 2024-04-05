@@ -15,7 +15,6 @@ test('It should return all jobs created for that particular week for dashboard v
   ]);
 
   JobCreationSchema.find = mockFind;
-
   const requestBody = {
     startDate: '2024-04-07',
     endDate: '2024-04-13'

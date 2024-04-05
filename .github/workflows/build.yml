@@ -25,10 +25,10 @@ jobs:
         run: |
             cd ./backend
             npx jest
-      # - name: Show Code Coverage
-      #   run: |
-      #       cd ./backend
-      #       npx jest --coverage --verbose
+      - name: Show Code Coverage
+        run: |
+            cd ./backend
+            npx jest --coverage --verbose
       - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@v4.0.1
         with:

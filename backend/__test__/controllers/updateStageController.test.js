@@ -49,7 +49,6 @@ test("It should update Job's stage as an Interview w.r.t jobID", async () => {
   
     const requestBody = { id: '562', stage:"HR Round" };
     const updatedJob = await updateStageController(requestBody);
-  
     // Assertions
     expect(updatedJob).toEqual({
         _id: '562',

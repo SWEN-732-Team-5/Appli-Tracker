@@ -17,7 +17,6 @@ test("It should set priority as high w.r.t jobID", async () => {
     JobCreationSchema.findOneAndUpdate = mockFindOneAndUpdate;
     const requestBody = { id: '123', priority: 'high' };
     const updatedJob = await assignPriorityController(requestBody);
-  
     // Assertions
     expect(updatedJob.priority).toBe('high');
     expect(updatedJob).toEqual({

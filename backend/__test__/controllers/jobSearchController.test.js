@@ -28,7 +28,6 @@ test('It should search Job that is Rochester based Location', async () => {
   expect(mockFind).toHaveBeenCalledWith(requestBody);
 });
 
-
 // TEST CASE - 5
 // Following test case tests for searching a Job w.r.t date, if user wants the Job data based on date which he/she has
 // applied. Here we are testing whether all jobs searched w.r.t 02/12/2024 date matches or not.
