@@ -32,7 +32,7 @@ jobs:
       - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@v4.0.1
         with:
-          token: 063125bd-5fac-4196-806b-d6224909af5e
+          token: ${{ secrets.CODECOV_TOKEN }}
           slug: SWEN-732-Team-5/Appli-Tracker
 
 
