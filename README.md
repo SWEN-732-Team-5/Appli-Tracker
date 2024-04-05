@@ -1,5 +1,6 @@
 [![codecov](https://codecov.io/gh/SWEN-732-Team-5/Appli-Tracker/graph/badge.svg?token=QA2N1CKG3I)](https://codecov.io/gh/SWEN-732-Team-5/Appli-Tracker)
 
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 # PROJECT Design Documentation
 
