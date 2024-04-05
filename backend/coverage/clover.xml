@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1712280978968" clover="3.2.0">
-  <project timestamp="1712280978968" name="All files">
+<coverage generated="1712287886632" clover="3.2.0">
+  <project timestamp="1712287886633" name="All files">
     <metrics statements="38" coveredstatements="30" conditionals="4" coveredconditionals="2" methods="4" coveredmethods="4" elements="46" coveredelements="36" complexity="0" loc="38" ncloc="38" packages="2" files="5" classes="5"/>
     <package name="controllers">
       <metrics statements="35" coveredstatements="27" conditionals="4" coveredconditionals="2" methods="4" coveredmethods="4"/>
-      <file name="assignPriorityController.js" path="/Users/soudagarlondhe/Documents/MS-Sem2/Collaborative-732/TeamProject - 20thMarch/Appli-Tracker/backend/controllers/assignPriorityController.js">
+      <file name="assignPriorityController.js" path="C:\Users\Manasi\Documents\SWEN732\Appli-Tracker\backend\controllers\assignPriorityController.js">
         <metrics statements="10" coveredstatements="7" conditionals="2" coveredconditionals="1" methods="1" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
@@ -17,7 +17,7 @@
         <line num="23" count="0" type="stmt"/>
         <line num="24" count="0" type="stmt"/>
       </file>
-      <file name="jobSearchController.js" path="/Users/soudagarlondhe/Documents/MS-Sem2/Collaborative-732/TeamProject - 20thMarch/Appli-Tracker/backend/controllers/jobSearchController.js">
+      <file name="jobSearchController.js" path="C:\Users\Manasi\Documents\SWEN732\Appli-Tracker\backend\controllers\jobSearchController.js">
         <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
@@ -25,7 +25,7 @@
         <line num="7" count="2" type="stmt"/>
         <line num="8" count="2" type="stmt"/>
       </file>
-      <file name="updateStageController.js" path="/Users/soudagarlondhe/Documents/MS-Sem2/Collaborative-732/TeamProject - 20thMarch/Appli-Tracker/backend/controllers/updateStageController.js">
+      <file name="updateStageController.js" path="C:\Users\Manasi\Documents\SWEN732\Appli-Tracker\backend\controllers\updateStageController.js">
         <metrics statements="10" coveredstatements="7" conditionals="2" coveredconditionals="1" methods="1" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
@@ -38,7 +38,7 @@
         <line num="23" count="0" type="stmt"/>
         <line num="24" count="0" type="stmt"/>
       </file>
-      <file name="weeklyDashboardController.js" path="/Users/soudagarlondhe/Documents/MS-Sem2/Collaborative-732/TeamProject - 20thMarch/Appli-Tracker/backend/controllers/weeklyDashboardController.js">
+      <file name="weeklyDashboardController.js" path="C:\Users\Manasi\Documents\SWEN732\Appli-Tracker\backend\controllers\weeklyDashboardController.js">
         <metrics statements="10" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
@@ -54,7 +54,7 @@
     </package>
     <package name="models">
       <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-      <file name="jobCreationModel.js" path="/Users/soudagarlondhe/Documents/MS-Sem2/Collaborative-732/TeamProject - 20thMarch/Appli-Tracker/backend/models/jobCreationModel.js">
+      <file name="jobCreationModel.js" path="C:\Users\Manasi\Documents\SWEN732\Appli-Tracker\backend\models\jobCreationModel.js">
         <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="5" type="stmt"/>
         <line num="3" count="5" type="stmt"/>

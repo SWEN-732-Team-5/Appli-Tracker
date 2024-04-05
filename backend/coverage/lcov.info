@@ -1,5 +1,5 @@
 TN:
-SF:controllers/assignPriorityController.js
+SF:controllers\assignPriorityController.js
 FN:5,assignPriorityController
 FNF:1
 FNH:1
@@ -22,7 +22,7 @@ BRF:2
 BRH:1
 end_of_record
 TN:
-SF:controllers/jobSearchController.js
+SF:controllers\jobSearchController.js
 FN:5,jobSearchController
 FNF:1
 FNH:1
@@ -38,7 +38,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:controllers/updateStageController.js
+SF:controllers\updateStageController.js
 FN:5,updateStageController
 FNF:1
 FNH:1
@@ -61,7 +61,7 @@ BRF:2
 BRH:1
 end_of_record
 TN:
-SF:controllers/weeklyDashboardController.js
+SF:controllers\weeklyDashboardController.js
 FN:5,weeklyDashboardController
 FNF:1
 FNH:1
@@ -82,7 +82,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:models/jobCreationModel.js
+SF:models\jobCreationModel.js
 FNF:0
 FNH:0
 DA:1,5
