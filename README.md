@@ -1,3 +1,4 @@
+[![codecov](https://codecov.io/gh/SWEN-732-Team-5/Appli-Tracker/graph/badge.svg?token=QA2N1CKG3I)](https://codecov.io/gh/SWEN-732-Team-5/Appli-Tracker)
 
 # PROJECT Design Documentation
 
