@@ -45,21 +45,46 @@ This design document encompasses comprehensive details regarding the 'Appli Trac
 
 # MVPs covered for Unit Test:
 
+* Priority levels : Users can assign priority levels (e.g., high, medium, low) to the Job. Test case tests for assigning priority to the job. Here we are assigning priority as 'High' for a particular Job which is distinguished by 'JobID', the updated Job should also have priority as High.
+[Link](https://github.com/SWEN-732-Team-5/Appli-Tracker/blob/dev-v2/backend/__test__/controllers/assignPriorityController.test.js)
+
+TEST CASE - 1
+Test case for assigning priority to the job. Here we are assigning priority as 'High' for a particular Job which is distinguished by 'JobID', the updated Job should also have priority as High.
+
 * Job creation : Users can create new job entries based on Co-ops or Full Time with a title, description and pay. When API endpoint ‘/createjob’ is called, job details are passed in the request body which comprises 'job_title','description', 'type' and 'payment'. This data is saved in the Mongodb database. If successfully saved it returns status code as 200 and also returns the json of recently created Job. Here, we are testing whether response status, job_title, description, type and payment matches with a recently created job.
 [Link](https://github.com/SWEN-732-Team-5/Appli-Tracker/blob/dev-v2/backend/__test__/controllers/jobCreationController.test.js)
 
-* Priority levels : Users can assign priority levels (e.g., high, medium, low) to the Job. Test case tests for assigning priority to the job. Here we are assigning priority as 'High' for a particular Job which is distinguished by 'JobID', the updated Job should also have priority as High.
-[Link](https://github.com/SWEN-732-Team-5/Appli-Tracker/blob/dev-v2/backend/__test__/controllers/assignPriorityController.test.js)
+TEST CASE - 2
+Unit test case if new Job is created successfully, Here we have mocked jobCreationController and jobCreationController() is called and job details are passed in request body which comprises of 'job_title','description', 'type' and 'payment' and in response the controller returns the json of recently created Job. Here, we are testing whether job_title, description, type and payment matches with the created job
+
+TEST CASE - 3
+Test case defines about creation of new Co-op position for a 'Apple' company once it is created successfully it checks whether the description, Job type 'Co-op' and 'Pay' matches with the actual create Co-op Job.
 
 * Search functionality : Users can search a job by company name, applied date, or category. Test case tests for searching a Job w.r.t location, if a user wants to search all the jobs he/she applied based on ‘Rochester’ location, here we are testing whether jobs returned by API is ‘Rochester’ based only. Test case also tests for searching a Job w.r.t date, if the user wants the Job data based on the date which he/she has applied. Here we are testing whether all jobs searched w.r.t 02/12/2024 date matches or not. 
 [Link](https://github.com/SWEN-732-Team-5/Appli-Tracker/blob/dev-v2/backend/__test__/controllers/jobSearchController.test.js)
 
+TEST CASE - 4
+Test case tests for searching a Job w.r.t location, if user wants to search all the jobs he/she applied based on Rochester location, here we are testing whether jobs returned by jobSearchController is Rochester based only.
+
+TEST CASE - 5
+Test case tests for searching a Job w.r.t date, if user wants the Job data based on date which he/she has applied. Here we are testing whether all jobs searched w.r.t 02/12/2024 date matches or not.
+
 * Tracking : Based on Recruitments reply users can edit and view the application status which makes it easier for tracking. Test case tests for updating a status or stage of a Job as a 'Interview'. Based on the recruiters response, if a user wants to update the status of a particular Job, he/she can update the stage. Here we are testing whether the updated stage is an Interview.
 [Link](https://github.com/SWEN-732-Team-5/Appli-Tracker/blob/dev-v2/backend/__test__/controllers/updateStageController.test.js)
+
+TEST CASE - 6
+Test case tests for updating a status or stage of a Job as a 'Interview'. Based on recruiters response if user wants to update status of a particular Job, he/she can update the stage. Here we are testing whether the updated stage is set to Interview.
+
+TEST CASE - 7
+Test case tests for updating a status or stage of a Job as a 'HR Round'. Based on recruiters response if user wants to update status of a particular Job, he/she can update the stage. Here we are testing whether the updated stage is set to HR Round.
 
 * Dashboard : The dashboard test case for job applications focuses on assessing jobs applied for within a specified week. By providing start_date and end_date parameters, this test identifies and returns a concise list of jobs applied to during the designated time frame. Ensuring accuracy and efficiency, this test aids in validating the functionality of the dashboard's job application feature, offering valuable insights into user activity and system performance.
 [Link](https://github.com/SWEN-732-Team-5/Appli-Tracker/blob/dev-v2/backend/__test__/controllers/weeklyDashboardController.test.js)
 
+TEST CASE - 8
+Test case tests for Jobs that are applied during that particular week. It takes start_date and end_date and returns list of jobs applied within that specific period.
+
+# Steps
 
 * Clone the git repository `https://github.com/SWEN-732-Team-5/Appli-Tracker.git`
 * Type `cd backend`
