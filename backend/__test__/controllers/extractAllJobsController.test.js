@@ -3,6 +3,10 @@ const request = require('supertest');
 const extractAllJobsController = require('../../controllers/extractAllJobsController');
 const JobCreationSchema = require('../../models/jobCreationModel');
 
+//  TEST CASE - 6
+// Following test case tests for extracting all jobs applied by particular user, so that in frontend side we can 
+// export in excel or csv files. Here we have passed 'username' and 'email' of the user so that all jobs applied
+// by that particular user is extracted
 
 describe('extractAllJobController', () => {
     test("It should extract all jobs associated with a specific username and email", async () => {

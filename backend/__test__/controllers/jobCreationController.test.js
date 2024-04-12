@@ -3,7 +3,7 @@ const request = require('supertest');
 
 const JobCreationSchema = require('../../models/jobCreationModel');
 
-//  TEST CASE - 2
+//  TEST CASE - 7
 // Following unit test case tests if new Job is created successfully, Here we have mocked jobCreationController and jobCreationController() is called
 // and job details are passed in request body which comprises of 'job_title','description', 'type' and 'payment'
 // and in response the controller returns the json of recently created Job.
@@ -61,11 +61,7 @@ describe('jobCreateController', () => {
             weblink: "https://mcrosoft.com",
             _id: expect.anything()
         });
-    
-    //   console.log("Mock Logs ::");
-    //   console.log(mockSave.mock.calls);
-  
-      // Assertion for mocked controller call
+
       expect(mockJobCreateController).toHaveBeenCalledWith(testData);
     });
   });
@@ -73,7 +69,7 @@ describe('jobCreateController', () => {
 
 
 
-//  TEST CASE - 3
+//  TEST CASE - 8
 // Following test case defines about creation of new Co-op position for a 'Apple' company once it is created successfully
 // it checks whether the description, Job type 'Co-op' and 'Pay' matches with the actual create Co-op Job.
 
@@ -130,10 +126,7 @@ describe('jobCreateController', () => {
             _id: expect.anything()
         });
     
-    //   console.log("Mock Logs ::");
-    //   console.log(mockSave.mock.calls);
-  
-      // Assertion for mocked controller call
+
       expect(mockJobCreateController).toHaveBeenCalledWith(testData);
     });
   });
