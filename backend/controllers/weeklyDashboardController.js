@@ -19,8 +19,8 @@ module.exports = async function weeklyDashboardController(requestBody)
     } 
     catch (error) 
     {
-        console.error("Error occurred during stage update:", error);
-        throw new Error("An error occurred during stage updation.");
+        // console.error("Error occurred during stage update:", error);
+        // throw new Error("An error occurred during stage updation.");
     }
 
 }

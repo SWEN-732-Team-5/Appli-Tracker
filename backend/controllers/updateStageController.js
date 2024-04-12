@@ -20,8 +20,8 @@ module.exports = async function updateStageController(requestBody)
         return updatedJob;
     } catch (error) {
         // Handle any errors
-        console.error("Error occurred during stage update:", error);
-        throw new Error("An error occurred during stage updation.");
+        // console.error("Error occurred during stage update:", error);
+        // throw new Error("An error occurred during stage updation.");
     }
 
 }

@@ -2,6 +2,12 @@ const mongoose = require('mongoose');
 
 const JobCreationSchema = mongoose.Schema(
     {
+        username:{
+            type:String
+        },
+        email:{
+            type: String
+        },
         job_title:{
             type: String,
             required: true
@@ -32,9 +38,13 @@ const JobCreationSchema = mongoose.Schema(
         },
         weblink : {
             type: String
+        },
+        attachments: {
+            type: [String],
+            required: false
         }
 
     }
 )
 
-module.exports = mongoose.model('Job_Data_2',JobCreationSchema)
+module.exports = mongoose.model('Job_Data_5',JobCreationSchema)
