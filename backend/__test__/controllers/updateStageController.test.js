@@ -4,7 +4,7 @@ const updateStageController = require('../../controllers/updateStageController')
 const JobCreationSchema = require('../../models/jobCreationModel'); 
 
 
-//  TEST CASE - 6
+//  TEST CASE - 13
 // Following test case tests for updating a status or stage of a Job as a 'Interview'. Based on recruiters response if user 
 // wants to update status of a particular Job, he/she can update the stage. Here we are testing whether the updated 
 // stage is set to Interview.
@@ -32,12 +32,12 @@ test("It should update Job's stage as an Interview w.r.t jobID", async () => {
   });
 
 
-//  TEST CASE - 7
+//  TEST CASE - 14
 // Following test case tests for updating a status or stage of a Job as a 'HR Round'. Based on recruiters response if user 
 // wants to update status of a particular Job, he/she can update the stage. Here we are testing whether the updated 
 // stage is set to HR Round.
 
-test("It should update Job's stage as an Interview w.r.t jobID", async () => {
+test("It should update Job's stage as an HR Round w.r.t jobID", async () => {
 
     const mockFindOneAndUpdate = jest.fn().mockResolvedValueOnce({
       _id: '562',

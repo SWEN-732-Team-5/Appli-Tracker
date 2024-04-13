@@ -3,7 +3,7 @@ const request = require('supertest');
 const jobSearchController = require('../../controllers/jobSearchController');
 const JobCreationSchema = require('../../models/jobCreationModel'); 
 
-//  TEST CASE - 4
+// TEST CASE - 9
 // Following test case tests for searching a Job w.r.t location, if user wants to search all the jobs he/she applied based on 
 // Rochester location, here we are testing whether jobs returned by jobSearchController is Rochester based only.
 
@@ -28,7 +28,9 @@ test('It should search Job that is Rochester based Location', async () => {
   expect(mockFind).toHaveBeenCalledWith(requestBody);
 });
 
-// TEST CASE - 5
+
+
+// TEST CASE - 10
 // Following test case tests for searching a Job w.r.t date, if user wants the Job data based on date which he/she has
 // applied. Here we are testing whether all jobs searched w.r.t 02/12/2024 date matches or not.
 
