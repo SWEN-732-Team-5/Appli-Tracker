@@ -14,8 +14,8 @@ Our project Titled 'Appli Tracker' is an web based software which helps in creat
 * Team name: Group5
 * Team members
   * Gadadare, Shardul, scg6975
-  * Londhe, Soudagar, srl1622
   * Patil, Manasi, mp9259
+  * Londhe, Soudagar, srl1622
   * Jadhav, Sakshi, sj9017
   * Shah, Parva, ps7384
 
@@ -110,6 +110,7 @@ Test case tests for updating a status or stage of a Job as a 'HR Round'. Based o
 
 * TEST CASE - 15
 Test case tests for Jobs that are applied during that particular week. It takes start_date and end_date and returns list of jobs applied within that specific period.
+
 
 # Steps
 
