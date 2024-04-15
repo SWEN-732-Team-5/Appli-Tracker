@@ -1,8 +1,6 @@
-import React, { useState } from 'react';
-import { Container, Row, Col, Form, FormGroup, Label, Input, Button, Alert } from 'reactstrap';
+import React from 'react';
+import { Container, Row, Col, Form, FormGroup, Label, Input, Button } from 'reactstrap';
 import { Link } from "react-router-dom";
-
-import { useNavigate  } from 'react-router-dom';
 
 const SignUp = () => {
  
@@ -68,11 +66,7 @@ const SignUp = () => {
                 />
               </Col>
             </FormGroup>
-            {/* {passwordMatchError && (
-              <Alert color="danger" className="mt-3">
-                Passwords do not match. Please enter matching passwords.
-              </Alert>
-            )} */}
+            {}
 
             <Button color="primary" type="submit">
               Sign Up
