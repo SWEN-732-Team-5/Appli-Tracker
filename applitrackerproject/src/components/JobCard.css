@@ -1,0 +1,21 @@
+.job-card {
+    background-color: #d12525;
+    padding: 20px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    width: calc(33.333% - 20px);
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+  }
+  
+  .apply-now {
+    background-color: #0066ff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin-top: 20px;
+    cursor: pointer;
+  }
+  
+  /* Adjust job card styles for mobile responsiveness */
+  
