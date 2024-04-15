@@ -13,7 +13,7 @@ const app =express();
 app.use(express.json())
 
 app.use(Cors())
-
+//Controllers
 const jobCreateController = require('./controllers/jobCreationController');
 const jobSearchController = require('./controllers/jobSearchController');
 const assignPriorityController = require('./controllers/assignPriorityController');
