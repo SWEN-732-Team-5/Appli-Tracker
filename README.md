@@ -5,6 +5,8 @@
 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=SWEN-732-Team-5_Appli-Tracker&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=SWEN-732-Team-5_Appli-Tracker)
+
 Our project Titled 'Appli Tracker' is an web based software which helps in creating a Job and tracking the application based on the status. It also allows User to create a Remainder's for upcoming tests or Interview so that it will be easy to track and complete the tasks before the deadlines. Based on number of application user can export the weekly and montly data.
 
 
