@@ -13,8 +13,6 @@ module.exports = async function extractAllJobController(requestBody) {
         const { username, email } = stringifiedBody; // Destructure after conversion
 
 
-        // const { username, email } = requestBody;
-
         const allJobs = await JobCreationSchema.find({ username, email });
 
         // Return the array of job data
