@@ -2,7 +2,7 @@ const monthlyCalendarController = require('../../controllers/monthlyCalendarCont
 const TodoSchema = require('../../models/todoSchema');
 
 // TEST CASE - 11
-// Following test case tests for extracting all Todo created by user w.r.t to month and year so that displaying in 
+// Following test case tests for extracting all to complete required task created by user w.r.t to month and year so that displaying in 
 // the calendar view would be easy to navigate through the deadline for the user. Here we have passed 'username', 'email' 
 // and monthyear passed in format MM/YYYY as March 2024, it will return all Todos for March 2024
 
@@ -47,7 +47,7 @@ describe('monthlyCalendarController', () => {
 
 
 // TEST CASE - 12
-// Following test case tests for extracting all Todo created by user w.r.t to month and year so that displaying in 
+// Following test case tests for extracting all to complete required task created by user w.r.t to month and year so that displaying in 
 // the calendar view would be easy to navigate through the deadline for the user. Here we have passed 'username', 'email' 
 // and monthyear passed in format MM/YYYY as April 2024, it will return all Todos for April 2024
 describe('monthlyCalendarController', () => {

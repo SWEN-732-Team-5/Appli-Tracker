@@ -36,9 +36,6 @@ app.post('/createjob', async (req, response) => {
    
      console.log("Data do came",req.body);
     const savedJob = await jobCreateController(req.body);
-    // const newJob = new JobCreationSchema(req.body);
-
-    // const savedJob = await newJob.save();
     response.status(200).send(savedJob)
    
 })
