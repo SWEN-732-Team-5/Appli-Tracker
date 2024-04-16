@@ -4,7 +4,16 @@ const JobCreationSchema = require('../models/jobCreationModel');
 
 module.exports = async function extractAllJobController(requestBody) {
     try {
-        const { username, email } = requestBody;
+
+        const stringifiedBody = {};
+        for (const key in requestBody) {
+            stringifiedBody[key] = String(requestBody[key]);
+        }
+
+        const { username, email } = stringifiedBody; // Destructure after conversion
+
+
+        // const { username, email } = requestBody;
 
         const allJobs = await JobCreationSchema.find({ username, email });
 
