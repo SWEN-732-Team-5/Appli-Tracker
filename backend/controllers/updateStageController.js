@@ -6,8 +6,8 @@ module.exports = async function updateStageController(requestBody)
 {
     try {
         const updatedJob = await JobCreationSchema.findOneAndUpdate(
-            { _id: requestBody.id },
-            { stage: requestBody.stage },
+            { _id: requestBody.id.toString() },
+            { stage: requestBody.stage.toString() },
             { new: true } // Return the updated document
         );
 
