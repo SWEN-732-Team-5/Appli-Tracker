@@ -34,16 +34,29 @@ mongoose.connect(connectionURL)
 
 app.post('/createjob', async (req, response) => {
    
-     console.log("Data do came",req.body);
+     console.log("Data that will be created",req.body);
     const savedJob = await jobCreateController(req.body);
-    response.status(200).send(savedJob)
-   
+
+    const responseData = {
+        status: "SUCCESS",
+        status_code: 200,
+        data: savedJob
+      };
+
+    response.status(200).send(responseData)
 })
 
 app.get('/searchjob', async (req, response) => {
 
     const searchedJobs = await jobSearchController(req.body);
-    response.status(200).send(searchedJobs)
+   
+    const responseData = {
+        status: "SUCCESS",
+        status_code: 200,
+        data: searchedJobs
+      };
+
+    response.status(200).send(responseData)
 })
 
 app.post('/assign_priority', async (req, response) => {
