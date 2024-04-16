@@ -99,6 +99,6 @@ app.get('/monthly_todos', async (req, response) => {
         data: getTodos
       };
 
-    response.status(200).send(getTodos)
+    response.status(200).send(responseData)
 })
 
