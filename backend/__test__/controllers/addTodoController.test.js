@@ -3,7 +3,7 @@ const TodoSchema = require('../../models/todoSchema');
 
 // TEST CASE - 3
 // Following unit test case tests for creating a to complete required task for already applied Jobs so that user could receive alerts 
-// accordingly. Here we passed 'title', 'deadline' to complete todo and 'description' for OA Round 1 for Paychex company
+// accordingly. Here we passed 'title', 'deadline' to complete required task and 'description' for OA Round 1 for Paychex company
 // controller returns updated json and we are verifying it using assertions
 
 describe('addTodoController', () => {
@@ -52,7 +52,7 @@ describe('addTodoController', () => {
 
 // TEST CASE - 4
 // Following unit test case tests for creating a to complete required task for already applied Jobs so that user could receive alerts 
-// accordingly. Here we passed 'title', 'deadline' to complete todo and 'description' for Apptitute Round 1 for Apple company.
+// accordingly. Here we passed 'title', 'deadline' to complete required task and 'description' for Apptitute Round 1 for Apple company.
 // controller returns updated json and we are verifying it using assertions
  
 describe('addTodoController', () => {

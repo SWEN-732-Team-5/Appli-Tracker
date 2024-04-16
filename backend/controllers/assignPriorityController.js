@@ -4,8 +4,7 @@ const JobCreationSchema = require('../models/jobCreationModel');
 
 module.exports = async function assignPriorityController(requestBody)
 {
-    // const searchResult = await JobCreationSchema.find(requestBody);
-    // return searchResult;
+    
     try {
         const updatedJob = await JobCreationSchema.findOneAndUpdate(
             { _id: requestBody.id },
