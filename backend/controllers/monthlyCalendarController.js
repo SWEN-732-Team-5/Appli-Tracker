@@ -25,7 +25,5 @@ module.exports = async function monthlyCalendarController(requestBody) {
 
         return todos;
     } catch (error) {
-        // console.error("Error occurred while fetching todos by month and year:", error);
-        // throw new Error("An error occurred while fetching todos by month and year.");
     }
 }

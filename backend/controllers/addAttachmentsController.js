@@ -4,15 +4,17 @@ const JobCreationSchema = require('../models/jobCreationModel');
 module.exports = async function addAttachmentsController(requestBody) {
     try {
 
-        // Find the job by its _id and update the attachments array
+        const filter = { _id: requestBody.id }; 
+        const update = { $push: { attachments: requestBody.attachment } };
+
         const updatedJob = await JobCreationSchema.findOneAndUpdate(
-            { _id: requestBody.id }, // Search criteria
-            { $push: { attachments: requestBody.attachment } }, // Append attachment to the attachments array
-            { new: true } // Return the updated document
+            filter,
+            update,
+            { new: true }
         );
 
-        // Return the updated job document
         return updatedJob;
     } catch (error) {
+        // Handle error
     }
 }
