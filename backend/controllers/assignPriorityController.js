@@ -7,8 +7,8 @@ module.exports = async function assignPriorityController(requestBody)
     
     try {
         const updatedJob = await JobCreationSchema.findOneAndUpdate(
-            { _id: requestBody.id },
-            { priority: requestBody.priority },
+            { _id: requestBody.id.toString() },
+            { priority: requestBody.priority.toString() },
             { new: true } // Return the updated document
         );
 
