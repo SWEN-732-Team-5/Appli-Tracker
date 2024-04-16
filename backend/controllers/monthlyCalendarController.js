@@ -4,7 +4,13 @@ const TodoSchema = require('../models/todoSchema');
 
 module.exports = async function monthlyCalendarController(requestBody) {
     try {
-        const { username, email, monthyear } = requestBody;
+
+        const stringifiedBody = {};
+        for (const key in requestBody) 
+        {
+          stringifiedBody[key] = String(requestBody[key]);
+        }
+        const { username, email, monthyear } = stringifiedBody;
         const [month, year] = monthyear.split('/');
 
         // Query the database to find all todos that match the given month and year

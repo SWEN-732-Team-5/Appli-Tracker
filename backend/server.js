@@ -92,6 +92,13 @@ app.post('/add_todo', async (req, response) => {
 app.get('/monthly_todos', async (req, response) => {
 
     const getTodos = await monthlyCalendarController(req.body);
+
+    const responseData = {
+        status: "SUCCESS",
+        status_code: 200,
+        data: getTodos
+      };
+
     response.status(200).send(getTodos)
 })
 
