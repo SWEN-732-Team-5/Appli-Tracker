@@ -21,7 +21,7 @@ const JobCard = ({ job }) => {
         </div>
       </div>
       <div className="job-description">
-        <p>{job.description}</p>
+        {/* <p>{job.description}</p> */}
         <p className="job-salary">{job.salary}</p>
 
       </div>

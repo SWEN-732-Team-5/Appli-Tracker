@@ -30,8 +30,11 @@
   flex-grow: 1;
   padding: 20px;
   overflow-y: auto;
-  background-image: url('./img/d1.jpg');
-  background-repeat: no-repeat;
+  /* background-image: url('./img/d1.jpg'); */
+  background-image: 
+  radial-gradient(at top left, #603cf4, transparent),
+  radial-gradient(at top right, #f7ccd3, transparent),
+  radial-gradient(at bottom left, #A7D3F2, transparent);  background-repeat: no-repeat;
   background-size: cover; /* Cover the entire area */
   background-position: center;
   /* background: #f0f2f5; */
