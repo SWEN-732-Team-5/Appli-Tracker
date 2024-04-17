@@ -1,0 +1,84 @@
+.job-filter {
+  background-color: rgba(255, 255, 255, 0.2);
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  gap: 10px;
+  max-width: 100%;
+  margin: 20px auto;
+}
+
+.filter-by {
+  display: flex;
+  align-items: center;
+}
+
+.filter-by label {
+  margin-right: 5px;
+}
+
+.filter-by select {
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  height: 38px;
+  background-color: #ffffff;
+  padding: 5px 10px;
+  font-size: 16px;
+}
+
+.filter-input input {
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  height: 38px;
+  padding: 5px 10px;
+  font-size: 16px;
+  flex-grow: 2; 
+}
+
+.filter-btn, .reset-btn {
+  border: none;
+  padding: 5px 15px;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.filter-btn {
+  background-color: #007bff;
+  color: #ffffff;
+}
+
+.reset-btn {
+  background-color: #6c757d;
+  color: #ffffff;
+}
+
+/* Hover effects */
+.filter-btn:hover {
+  background-color: #0056b3;
+}
+
+.reset-btn:hover {
+  background-color: #545b62;
+}
+
+@media (max-width: 768px) {
+  .job-filter {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .filter-by, .filter-input, .filter-btn, .reset-btn {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .filter-by select, .filter-input input {
+    flex-grow: 1; /* Reset to 1 on smaller screens */
+  }
+
+  .reset-btn {
+    margin-bottom: 0; /* Remove bottom margin for the last item */
+  }
+}

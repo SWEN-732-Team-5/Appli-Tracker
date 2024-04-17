@@ -6,12 +6,26 @@ import { Link } from "react-router-dom";
 
 function Login() {
 
+  const navigate = useNavigate();
+
+  // Dummy login function for demonstration
+  const handleLogin = async (event) => {
+    event.preventDefault(); // Prevent the default form submission
+    
+    // Here, you would usually have code to check credentials, for example:
+    // const credentials = { email_id: event.target.email_id.value, password: event.target.password.value };
+    // const loginResponse = await loginService(credentials);
+    
+    // If login is successful, navigate to Dashboard
+    navigate('/dashboard');
+  };
+
   return (
     <div className="App">      
       <main>
         <div className="login-form">
           <h2>Login</h2>
-          <form>
+          <form onSubmit={handleLogin}>
               <div>
                 <div className="form-group">
                   <input type="id" name="email_id" id="email_id" placeholder="Enter your id" required/>

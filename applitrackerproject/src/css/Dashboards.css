@@ -1,0 +1,26 @@
+.add-job-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1050;
+  }
+  
+  /* Style the modal backdrop to fill the window and center the modal */
+  .modal-backdrop {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1040;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  
+  /* If you want to add more custom styles to the modal, do it here */
+  .modal-custom {
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    /* Other styles as needed */
+  }
+  
