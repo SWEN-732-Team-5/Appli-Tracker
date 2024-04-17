@@ -11,6 +11,8 @@ const JobCard = ({ job }) => {
   const handleCloseModal = () => setShowModal(false);
 
   return (
+    <div>
+      <br></br>
     <div className="job-card">
       <div className="job-card-header">
         {/* <img src={job.logo} className="company-logo" /> */}
@@ -47,6 +49,7 @@ const JobCard = ({ job }) => {
           <Button variant="secondary" onClick={handleCloseModal}>Close</Button>
         </Modal.Footer>
       </Modal>
+    </div>
     </div>
   );
 };

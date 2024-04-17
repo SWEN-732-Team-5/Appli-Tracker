@@ -47,7 +47,12 @@ const Dashboard = ({ jobs }) => {
     <div className="dashboard">
       <Sidebar />
       <div className="dashboard-main">
-        <JobFilter />
+        <div className="filter-background">
+          <br></br>
+          <p className='projectTitle'>Appli Tracker</p>
+          <p className='subTitle'><i>"If opportunity doesn't <b>knock</b>, build a <b>door</b>"</i></p>
+          <JobFilter />
+        </div>        
         <JobList jobs={jobs} />
         <Button className="add-job-button" onClick={openModal}>
           Add Job
