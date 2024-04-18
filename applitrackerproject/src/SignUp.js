@@ -72,7 +72,7 @@ const SignUp = () => {
               Sign Up
             </Button>
 
-            <Link to="/login_nightclub">
+            <Link to="/login">
                   <Button color="primary">LogIn</Button>
             </Link>
 
