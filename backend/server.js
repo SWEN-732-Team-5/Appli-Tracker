@@ -77,7 +77,7 @@ app.post('/add_attachment', async (req, response) => {
     response.status(200).send(updatedJob)
 })
 
-app.get('/jobs', async (req, response) => {
+app.post('/jobs', async (req, response) => {
 
     const updatedJob = await extractAllJobsController(req.body);
     response.status(200).send(updatedJob)

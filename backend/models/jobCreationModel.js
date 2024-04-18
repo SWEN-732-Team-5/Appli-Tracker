@@ -23,6 +23,10 @@ const JobCreationSchema = mongoose.Schema(
             type: Number,
             required: true
         },
+        payment_type: {
+            type: String,
+            required: false
+        },
         applied_date : {
             type: String
         },
@@ -42,9 +46,13 @@ const JobCreationSchema = mongoose.Schema(
         attachments: {
             type: [String],
             required: false
+        },
+        details: {
+            type: String,
+            required: false
         }
 
     }
 )
 
-module.exports = mongoose.model('Job_Data_5',JobCreationSchema)
+module.exports = mongoose.model('Job_Data_6',JobCreationSchema)

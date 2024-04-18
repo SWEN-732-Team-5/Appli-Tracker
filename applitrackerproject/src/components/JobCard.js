@@ -18,19 +18,19 @@ const JobCard = ({ job }) => {
         {/* <img src={job.logo} className="company-logo" /> */}
         <img src={logo} alt="Logo" className="company-logo" />
         <div className="job-info">
-          <h3 className="job-title">{job.title}</h3>
-          <p className="company-name">{job.company}</p>
+          <h3 className="job-title">{job.description}</h3>
+          <p className="company-name">{job.job_title}</p>
         </div>
       </div>
       <div className="job-description">
         {/* <p>{job.description}</p> */}
-        <p className="job-salary">{job.salary}</p>
+        <p className="job-salary">{job.payment}/{job.payment_type}</p>
 
       </div>
       <div className="job-footer">
         <div className="job-tags">
           <span className="job-type">{job.type}</span>
-          <span className="job-category">{job.category}</span>
+          <span className="job-category">{job.priority}</span>
           <span className="job-location">{job.location}</span>
         </div>
         <div className="salary-apply">
