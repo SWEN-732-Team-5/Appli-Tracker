@@ -56,6 +56,19 @@
     }
 </style>
 </head>
+<div id="taskCalendar">
+    <button id="prevMonth">Previous</button>
+    <button id="nextMonth">Next</button>
+    <h2 id="monthLabel"></h2>
+    <div id="calendarDays"></div>
+</div>
+
+<div id="newTaskForm">
+    <input type="date" id="taskDate" required>
+    <input type="text" id="taskType" placeholder="Type of Task" required>
+    <input type="text" id="taskContent" placeholder="Task Details" required>
+    <button onclick="addTask()">Add Task</button>
+</div>
 <script>
 
     let currentDate = new Date();
