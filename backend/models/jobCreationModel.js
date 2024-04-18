@@ -55,4 +55,4 @@ const JobCreationSchema = mongoose.Schema(
     }
 )
 
-module.exports = mongoose.model('Job_Data_6',JobCreationSchema)
+module.exports = mongoose.model('Job_Data_7',JobCreationSchema)

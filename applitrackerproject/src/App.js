@@ -24,8 +24,8 @@ function App() {
           'Content-Type': 'application/json' // Specify content type as JSON
         },
         body: JSON.stringify({ // Convert object to JSON string
-          username: 'Sakshi',
-          email: 'sakshi@gmail.com'
+          username: 'Manasi',
+          email: 'manasi@gmail.com'
         }),
       });
 
