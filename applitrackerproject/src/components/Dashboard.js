@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Button, Modal, Form } from 'react-bootstrap';
-import Sidebar from './Sidebar';
+// import Sidebar from './Sidebar';
+import Sidebar from './Sidebar'; // Adjust the path if necessary
 import JobFilter from './JobFilter';
 import JobList from './JobList';
 import './Dashboard.css';  // Ensure you have the required CSS
@@ -66,6 +67,7 @@ const Dashboard = ({ jobs }) => {
 
   return (
     <div className="dashboard">
+      {/* <Sidebar /> */}
       <Sidebar />
       <div className="dashboard-main">
         <div className="filter-background">
@@ -236,6 +238,7 @@ const Dashboard = ({ jobs }) => {
                   </div>
                 </Form.Group>
               </fieldset>
+
               <Form.Group className="mb-3">
                 <Form.Label>Attachment</Form.Label>
                 <Form.Control
@@ -265,7 +268,3 @@ const Dashboard = ({ jobs }) => {
 };
 
 export default Dashboard;
-
-
-
-
