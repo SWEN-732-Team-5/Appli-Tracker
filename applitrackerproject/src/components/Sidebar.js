@@ -46,13 +46,19 @@ const Sidebar = () => {
     }
   };
 
+  const handleExportKeyDown = (e) => {
+    if (e.key === 'Enter') {
+      exportToCsv();
+    }
+  };
+
   return (
     <nav className="sidebar">
       {/* Insert your links and icons here */}
       <div className="sidebar-item">Dashboard</div>
       <div className="sidebar-item">Messages</div>
       <div className="sidebar-item">My Applications</div>
-      <div className="sidebar-item" onClick={exportToCsv}>Export Jobs</div>
+      <div className="sidebar-item" onClick={exportToCsv} onKeyDown={handleExportKeyDown}>Export Jobs</div>
       <div className="sidebar-item">My Profile</div>
     </nav>
   );
