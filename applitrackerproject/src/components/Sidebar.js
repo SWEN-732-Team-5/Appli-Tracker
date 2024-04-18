@@ -78,7 +78,7 @@ const Sidebar = () => {
         <FontAwesomeIcon icon={faHome} className="sidebar-icon" />
         <span className="sidebar-text">Dashboard</span>
       </div>
-      <div className="sidebar-item" onClick={exportToCsv}>
+      <div className="sidebar-item" onClick={exportToCsv} role="button">
         <FontAwesomeIcon icon={faUser} className="sidebar-icon" />
         <span className="sidebar-text" >Export Job</span>
       </div>
