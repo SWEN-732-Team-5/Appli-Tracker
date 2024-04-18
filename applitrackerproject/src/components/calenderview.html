@@ -71,6 +71,15 @@
 </div>
 <script>
 
+document.getElementById('prevMonth').addEventListener('click', () => changeMonth(-1));
+document.getElementById('nextMonth').addEventListener('click', () => changeMonth(1));
+
+let tasks = [
+    { date: '2024-04-10', type: 'Meeting', content: 'Project discussion with team.' },
+    { date: '2024-04-15', type: 'Deadline', content: 'Submit project report.' },
+    { date: '2024-04-20', type: 'Event', content: 'Team building event.' }
+];
+
     let currentDate = new Date();
 
 function renderCalendar() {
@@ -100,6 +109,32 @@ function renderCalendar() {
 
     document.getElementById('calendarDays').innerHTML = calendarHTML;
 }
+
+function addTask() {
+    const taskDate = document.getElementById('taskDate').value;
+    const taskType = document.getElementById('taskType').value;
+    const taskContent = document.getElementById('taskContent').value;
+
+    if (!taskDate || !taskType || !taskContent) {
+        alert("All fields are required!");
+        return;
+    }
+
+    tasks.push({
+        date: taskDate,
+        type: taskType,
+        content: taskContent
+    });
+
+    renderCalendar();
+}
+
+function changeMonth(months) {
+    currentDate.setMonth(currentDate.getMonth() + months);
+    renderCalendar();
+}
+
+renderCalendar();
 </script>
 </body>
 </html>
