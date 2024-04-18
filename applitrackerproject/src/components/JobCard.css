@@ -66,8 +66,7 @@ gap: 10px;
 }
 
 .job-type,
-.job-category,
-.job-location {
+.job-category {
 background-color: #f3f4f6;
 color: #007bff;
 border-radius: 15px;
@@ -111,6 +110,26 @@ cursor: pointer;
   align-self: center;
   }
 }
+
+.priority-high {
+  background-color: rgb(251, 116, 58);
+  color: white; /* For better readability */
+}
+
+.priority-medium {
+  background-color: rgb(231, 250, 60);
+  color: rgb(2, 2, 2); /* For better readability */
+}
+
+.priority-low {
+  background-color: rgb(46, 243, 147);
+  color: black; /* Assuming yellow isn't bright enough to affect readability */
+}
+.location-logo{
+  height: 30px; /* Adjust size as needed */
+  width: 25px; 
+}
+
 
 
 
