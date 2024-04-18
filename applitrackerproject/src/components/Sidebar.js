@@ -1,6 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// Import specific icons from Font Awesome or another icon library
+import { faBars, faHome, faUser, faEnvelope, faUserCircle } from '@fortawesome/free-solid-svg-icons';
+import './Sidebar.css';
 
 const Sidebar = () => {
+  const [isExpanded, setIsExpanded] = useState(false);
+
+  const toggleSidebar = () => {
+    setIsExpanded(!isExpanded);
+  };
+
   const exportToCsv = async () => {
     try {
       const response = await fetch('http://localhost:8000/jobs', {
@@ -47,14 +57,31 @@ const Sidebar = () => {
   };
 
   return (
-    <nav className="sidebar">
-      {/* Insert your links and icons here */}
-      <div className="sidebar-item">Dashboard</div>
-      <div className="sidebar-item">Messages</div>
-      <div className="sidebar-item">My Applications</div>
-      <div className="sidebar-item" onClick={exportToCsv}>Export Jobs</div>
-      <div className="sidebar-item">My Profile</div>
-    </nav>
+    <div className={`sidebar ${isExpanded ? 'expanded' : ''}`}>
+      {/* This is the hamburger icon item that toggles the sidebar */}
+      <div className="sidebar-item hamburger" onClick={toggleSidebar}>
+        <FontAwesomeIcon icon={faBars} className="sidebar-icon" />
+      </div>
+      {/* New profile item with specific styling */}
+      <div className="sidebar-item profile">
+        <FontAwesomeIcon icon={faUserCircle} className="sidebar-icon profile-icon" />
+        <span className="sidebar-text profile-text">Edit Profile</span>
+      </div>
+      {/* Rest of sidebar items */}
+      <div className="sidebar-item">
+        <FontAwesomeIcon icon={faHome} className="sidebar-icon" />
+        <span className="sidebar-text">Dashboard</span>
+      </div>
+      <div className="sidebar-item" onClick={exportToCsv}>
+        <FontAwesomeIcon icon={faUser} className="sidebar-icon" />
+        <span className="sidebar-text" >Export Job</span>
+      </div>
+      <div className="sidebar-item">
+        <FontAwesomeIcon icon={faEnvelope} className="sidebar-icon" />
+        <span className="sidebar-text">View Calendar</span>
+      </div>
+      {/* ... other sidebar items ... */}
+    </div>
   );
 };
 

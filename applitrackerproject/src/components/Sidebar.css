@@ -1,14 +1,99 @@
 .sidebar {
-    width: 200px;
-    background-color: #ffffff;
-    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
-    padding: 20px;
-  }
-  
-  .sidebar-item {
-    margin-bottom: 20px;
-    cursor: pointer;
-  }
-  
-  /* Add additional sidebar styles as needed */
-  
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center children horizontally when collapsed */
+  width: 50px; /* Width when collapsed */
+  transition: width 0.25s ease-in-out; /* Smooth transition for width */
+  /* Add your default styles here */
+}
+
+.sidebar-item {
+  display: flex;
+  align-items: center; /* Center the content vertically */
+  justify-content: center; /* Center content horizontally by default (for collapsed state) */
+  padding: 10px; /* Padding for bigger clickable area */
+  position: relative; /* Needed for absolute positioning of child elements */
+  width: 100%; /* Ensure items fill the sidebar width */
+  min-height: 50px; /* Minimum height for sidebar items to prevent overlap */
+  /* Add your default styles here */
+}
+
+.sidebar-icon, .profile-icon {
+  margin: 0; /* Remove margin to center icons */
+  font-size: 24px; /* Standard icon size */
+  /* Add your default styles here */
+}
+
+/* For the profile icon specifically */
+.profile-icon {
+  padding: 5px; /* Padding inside the border */
+  width: 34px; /* Width of the icon */
+  height: 34px; /* Height of the icon */
+}
+
+/* Increased bottom margin for the profile item to prevent overlap */
+.sidebar-item.profile {
+  margin-bottom: 25px; /* Increase space below the profile item */
+}
+
+.sidebar-text {
+  display: none; /* Hide text when sidebar is collapsed */
+  text-align: center; /* Ensure text is centered below the icon */
+  font-size: 16px; /* Font size for the profile text */
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+/* Adjustments when the sidebar is expanded */
+.sidebar.expanded {
+  width: 200px; /* Width when expanded */
+  align-items: flex-start; /* Align children to the start when expanded */
+}
+
+.sidebar.expanded .sidebar-item {
+  justify-content: flex-start; /* Align content to the start (left) when expanded */
+}
+
+.sidebar.expanded .sidebar-icon {
+  margin-right: 12px; /* Space between icon and text */
+}
+
+/* Specific adjustments for the profile icon when expanded */
+.sidebar.expanded .profile-icon {
+  font-size: 28px; /* Larger font size for expanded state */
+  width: 48px; /* Increased width for larger icon */
+  height: 48px; /* Increased height for larger icon */
+  /* Center the icon within the expanded sidebar */
+  margin: 0 auto; /* Auto margins for horizontal centering */
+}
+
+/* Show the profile text below the icon when the sidebar is expanded */
+.sidebar.expanded .profile-text {
+  display: block; /* Show text when expanded */
+  position: absolute; /* Take out of normal document flow */
+  left: 0; /* Align to the left edge of the parent */
+  right: 0; /* Align to the right edge of the parent */
+  bottom: -0.00001em; /* Position below the icon, adjust as needed */
+  transform: translateY(100%); /* Move down from the top edge of the icon */
+  opacity: 1; /* Make it fully visible */
+  font-size: 18px; /* Increased font size for expanded state */
+  margin-top: 12px; /* Space between the icon and the text */
+  width: 100%; /* Full width of the item */
+  text-align: center; /* Center the text */
+}
+
+/* Additional styles to correct the alignment of non-profile items */
+.sidebar.expanded .sidebar-item:not(.profile) .sidebar-icon {
+  margin-right: 0; /* Remove right margin if necessary */
+}
+
+/* Ensure non-profile items text is shown and aligned properly when expanded */
+.sidebar.expanded .sidebar-item:not(.profile) .sidebar-text {
+  display: block; /* Ensure the text is shown */
+  opacity: 1; /* Make the text fully visible */
+  position: relative; /* Keep it in normal document flow */
+  left: auto; /* Reset any left positioning */
+  transform: none; /* Remove any transforms */
+  text-align: left; /* Align text to the left */
+  margin-left: 12px; /* Space between icon and text */
+}
