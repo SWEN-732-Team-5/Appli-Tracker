@@ -198,7 +198,6 @@
 /* Style the button within the logout item for consistency */
 .sidebar .logout .sidebar-button {
   width: 100%; /* Full width of the sidebar item */
-  padding: 5px 0; /* Padding for a larger clickable area */
   color: red;
 }
 

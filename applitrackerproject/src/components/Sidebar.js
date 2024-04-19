@@ -121,15 +121,14 @@ const Sidebar = () => {
       {/* Put your edit profile form or content here */}
       </Modal>
 
-      <Link to="/home_Dashboard"><div className="sidebar-item">
+      <div className="sidebar-item">
         <button className="sidebar-button" onClick={handleDashboardClick}>
           <FontAwesomeIcon icon={faHome} className="sidebar-icon" />
           <span className="sidebar-text">
-          Dashboard
+          <Link to="/home_Dashboard" style={{ color: 'black', textDecoration: 'none' }}> Dashboard </Link>
         </span>
         </button>
       </div>
-      </Link>
 
       <div className="sidebar-item" onClick={exportToCsv}  onKeyDown={(e) => {
         if (e.key === 'Enter' || e.key === 'Space') {
@@ -142,23 +141,17 @@ const Sidebar = () => {
         </button>
       </div>
 
-      <div className="sidebar-item clickable">
-        <button className="sidebar-button" onClick={handleViewCalendar}>
-          <FontAwesomeIcon icon={faEnvelope} className="sidebar-icon" />
-          <span className="sidebar-text">
-            <Link to="/view_calendar" style={{ color: 'black', textDecoration: 'none' }}>
-              View Calendar
-            </Link>
-          </span>
-        </button>
-      </div>
-
-
+    <div className="sidebar-item">
+      <button className="sidebar-button" onClick={handleViewCalendar}>
+        <FontAwesomeIcon icon={faEnvelope} className="sidebar-icon" />
+        <span className="sidebar-text"><Link to="/view_calender" style={{ color: 'black', textDecoration: 'none' }}>View Calendar</Link></span>
+      </button>
+    </div>
       <div className="sidebar-item">
       <button className="sidebar-button" onClick={handleViewCalendar}>
         <FontAwesomeIcon icon={faChartBar} className="sidebar-icon" />
         <span className="sidebar-text">
-          <Link to="/data_visualize">View Graph</Link>
+          <Link to="/data_visualize" style={{ color: 'black', textDecoration: 'none' }}>View Graph</Link>
         </span>
         </button>
       </div>
