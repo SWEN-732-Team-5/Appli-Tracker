@@ -65,7 +65,12 @@ const Sidebar = () => {
   return (
     <div className={`sidebar ${isExpanded ? 'expanded' : ''}`}>
       {/* This is the hamburger icon item that toggles the sidebar */}
-      <div className="sidebar-item hamburger" onClick={toggleSidebar}>
+      <div className="sidebar-item hamburger" onClick={toggleSidebar} onKeyDown={(e) => {
+    // Trigger the click event handler when Enter or Space key is pressed
+    if (e.key === 'Enter' || e.key === 'Space') {
+      toggleSidebar();
+    }
+  }}>
         <FontAwesomeIcon icon={faBars} className="sidebar-icon" />
       </div>
       {/* New profile item with specific styling */}
