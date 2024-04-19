@@ -35,75 +35,102 @@ mongoose.connect(connectionURL)
 
 app.post('/createjob', async (req, response) => {
    
-     console.log("Data that will be created",req.body);
-    const savedJob = await jobCreateController(req.body);
+    console.log("Data that will be created",req.body);
+   const savedJob = await jobCreateController(req.body);
 
-    const responseData = {
-        status: "SUCCESS",
-        status_code: 200,
-        data: savedJob
-      };
+   const responseData = {
+       status: "SUCCESS",
+       status_code: 200,
+       data: savedJob
+     };
 
-    response.status(200).send(responseData)
+   response.status(200).send(responseData)
 })
 
-app.get('/searchjob', async (req, response) => {
+app.post('/searchjob', async (req, response) => {
 
-    const searchedJobs = await jobSearchController(req.body);
-   
-    const responseData = {
-        status: "SUCCESS",
-        status_code: 200,
-        data: searchedJobs
-      };
+   const searchedJobs = await jobSearchController(req.body);
+  
+   // const responseData = {
+   //     status: "SUCCESS",
+   //     status_code: 200,
+   //     data: searchedJobs
+   //   };
 
-    response.status(200).send(responseData)
+   response.status(200).send(searchedJobs)
 })
 
 app.post('/assign_priority', async (req, response) => {
 
-    const updatedJob = await assignPriorityController(req.body);
-    response.status(200).send(updatedJob)
+   const updatedJob = await assignPriorityController(req.body);
+
+   const responseData = {
+       status: "SUCCESS",
+       status_code: 200,
+       data: updatedJob
+     };
+
+   response.status(200).send(responseData)
 })
 
 app.post('/update_stage', async (req, response) => {
 
-    const updatedJob = await updateStageController(req.body);
-    response.status(200).send(updatedJob)
+   const updatedJob = await updateStageController(req.body);
+
+   const responseData = {
+       status: "SUCCESS",
+       status_code: 200,
+       data: updatedJob
+     };
+
+   response.status(200).send(responseData)
 })
 
 app.post('/add_attachment', async (req, response) => {
 
-    const updatedJob = await addAttachmentsController(req.body);
-    response.status(200).send(updatedJob)
+   const updatedJob = await addAttachmentsController(req.body);
+
+   const responseData = {
+       status: "SUCCESS",
+       status_code: 200,
+       data: updatedJob
+     };
+
+   response.status(200).send(responseData)
+  
 })
 
 app.post('/jobs', async (req, response) => {
 
-    const updatedJob = await extractAllJobsController(req.body);
-    response.status(200).send(updatedJob)
+   const updatedJob = await extractAllJobsController(req.body);
+   response.status(200).send(updatedJob)
 })
 
 app.post('/add_todo', async (req, response) => {
 
-    const updatedJob = await addTodoController(req.body);
-    response.status(200).send(updatedJob)
+   const updatedJob = await addTodoController(req.body);
+
+   const responseData = {
+       status: "SUCCESS",
+       status_code: 200,
+       data: updatedJob
+     };
+
+   response.status(200).send(responseData)
 })
 
-app.get('/monthly_todos', async (req, response) => {
+app.post('/monthly_todos', async (req, response) => {
 
-    const getTodos = await monthlyCalendarController(req.body);
+   const getTodos = await monthlyCalendarController(req.body);
 
-    const responseData = {
-        status: "SUCCESS",
-        status_code: 200,
-        data: getTodos
-      };
+   // const responseData = {
+   //     status: "SUCCESS",
+   //     status_code: 200,
+   //     data: getTodos
+   //   };
 
-    response.status(200).send(responseData)
+   response.status(200).send(getTodos)
 })
-
-//Login, Signup API (Parva)
 
 app.post('/signup', async (req, response) => {
    

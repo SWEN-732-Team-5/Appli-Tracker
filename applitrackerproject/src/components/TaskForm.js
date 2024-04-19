@@ -11,11 +11,35 @@ function TaskForm({ addTask }) {
       alert("All fields are required!");
       return;
     }
-
     addTask({ date: taskDate, type: taskType, content: taskContent });
+    saveToDo();
     setTaskDate('');
     setTaskType('');
     setTaskContent('');
+  };
+
+  const saveToDo = async () => {
+    try {
+      // Parse and format the taskDate to mm/dd/yyyy format
+      const [year, month, day] = taskDate.split('-');
+      const formattedDate = `${month}/${day}/${year}`;
+
+      const response = await fetch('http://localhost:8000/add_todo', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json' // Specify content type as JSON
+        },
+        body: JSON.stringify({ // Convert object to JSON string
+          username: 'Manasi',
+          email: 'manasi@gmail.com',
+          title: taskType,
+          deadline: formattedDate, // Use the formatted date
+          description: taskContent
+        }),
+      });
+    } catch (error) {
+      console.error('Error fetching jobs:', error);
+    }
   };
 
   return (

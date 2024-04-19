@@ -13,6 +13,28 @@ function CalendarView({ tasks }) {
   const changeMonth = (months) => {
     const newDate = new Date(currentDate.getFullYear(), currentDate.getMonth() + months);
     setCurrentDate(newDate);
+
+    fetchToDo(newDate.getMonth() + 1, newDate.getFullYear()); // Call fetchToDo with updated month and year
+  };
+
+  const fetchToDo = async (month, year) => {
+    try {
+      const monthYear = `${String(month).padStart(2, '0')}/${year}`;
+
+      const response = await fetch('http://localhost:8000/monthly_todos', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json' // Specify content type as JSON
+        },
+        body: JSON.stringify({ // Convert object to JSON string
+          username: 'Manasi',
+          email: 'manasi@gmail.com',
+          monthyear: monthYear // Use the formatted month/year value
+        }),
+      });
+    } catch (error) {
+      console.error('Error fetching jobs:', error);
+    }
   };
 
   const renderCalendar = () => {
