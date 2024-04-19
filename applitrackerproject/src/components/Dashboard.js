@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Button, Modal, Form } from 'react-bootstrap';
-// import Sidebar from './Sidebar';
 import Sidebar from './Sidebar'; // Adjust the path if necessary
 import JobFilter from './JobFilter';
 import JobList from './JobList';
@@ -249,11 +248,6 @@ const Dashboard = ({ jobs }) => {
                   accept=".pdf,.doc,.docx" // Specify the file types you want to accept
                   // isInvalid={!!newJob.attachmentError} // Add state logic for attachment error handling
                 />
-                {/* {newJob.attachmentError && (
-                  <Form.Control.Feedback type="invalid">
-                    {newJob.attachmentError}
-                  </Form.Control.Feedback>
-                )} */}
                 <Form.Text className="text-muted">
                   Drop or browse files to upload (Max file size: 64.00 MB)
                 </Form.Text>

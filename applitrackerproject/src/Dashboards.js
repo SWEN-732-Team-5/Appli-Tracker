@@ -10,7 +10,6 @@ const applicationsData = [
 ];
 
 function Dashboards() {
-  const [applications, setApplications] = useState(applicationsData);
   const [showModal, setShowModal] = useState(false);
   const [newJob, setNewJob] = useState({ title: '', company: '', location: '' });
 

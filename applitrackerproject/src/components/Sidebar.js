@@ -56,25 +56,19 @@ const Sidebar = () => {
     }
   };
 
-  // const toggleCalendar = () => {
-  //   setShowCalendar(!showCalendar);
-  // };
-
-  
-
   return (
-    <div className={`sidebar ${isExpanded ? 'expanded' : ''}`}>
+    <div className={`sidebar ${isExpanded ? 'expanded' : ''}`} role="button">
       {/* This is the hamburger icon item that toggles the sidebar */}
       <div className="sidebar-item hamburger" onClick={toggleSidebar} onKeyDown={(e) => {
     // Trigger the click event handler when Enter or Space key is pressed
     if (e.key === 'Enter' || e.key === 'Space') {
       toggleSidebar();
     }
-  }}>
+  }} role="button">
         <FontAwesomeIcon icon={faBars} className="sidebar-icon" />
       </div>
       {/* New profile item with specific styling */}
-      <div className="sidebar-item profile">
+      <div className="sidebar-item profile" role="button">
         <FontAwesomeIcon icon={faUserCircle} className="sidebar-icon profile-icon" />
         <span className="sidebar-text profile-text">Edit Profile</span>
       </div>
@@ -88,16 +82,16 @@ const Sidebar = () => {
     if (e.key === 'Enter' || e.key === 'Space') {
       exportToCsv();
     }
-  }} >
+  }} role="button">
         <FontAwesomeIcon icon={faUser} className="sidebar-icon" />
         <span className="sidebar-text" >Export Job</span>
       </div>
-      <div className="sidebar-item clickable">
+      <div className="sidebar-item clickable" role="button">
         <FontAwesomeIcon icon={faEnvelope} className="sidebar-icon" />
         <span className="sidebar-text">
         <Link to="/view_calender">View Calendar</Link></span>
       </div>
-      <div className="sidebar-item">
+      <div className="sidebar-item" role="button">
         <FontAwesomeIcon icon={faChartBar} className="sidebar-icon" />
         <span className="sidebar-text">
           <Link to="/data_visualize">View Graph</Link>

@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Modal, Button } from 'react-bootstrap';
 import './JobCard.css'; // Make sure to update your CSS file accordingly
 import ViewJobDescription from './ViewJobDescription';
-// import logo from './img/google.png';  // Path to the logo image file
 
 const JobCard = ({ job }) => {
   const [showModal, setShowModal] = useState(false);
