@@ -12,17 +12,17 @@ const JobCard = ({ job }) => {
 
   const getLogoImage = (company) => {
     if (company.toLowerCase() === 'google') 
-      return <img src={require('./img/j1.png')} alt="Logo" className="company-logo" />;
+      return <img src={require('./img/j1.png')} alt="googleLogo" className="company-logo" />;
     else if(company.toLowerCase() === 'amazon')
-      return <img src={require('./img/j2.png')} alt="Logo" className="company-logo" />;
+      return <img src={require('./img/j2.png')} alt="amazonLogo" className="company-logo" />;
     else if(company.toLowerCase() === 'atlassian')
-      return <img src={require('./img/j3.png')} alt="Logo" className="company-logo" />;
+      return <img src={require('./img/j3.png')} alt="atlassianLogo" className="company-logo" />;
     else if(company.toLowerCase() === 'oracle')
-      return <img src={require('./img/j4.png')} alt="Logo" className="company-logo" />;
+      return <img src={require('./img/j4.png')} alt="oracleLogo" className="company-logo" />;
     else if(company.toLowerCase() === 'meta')
-      return <img src={require('./img/j5.png')} alt="Logo" className="company-logo" />;
+      return <img src={require('./img/j5.png')} alt="metaLogo" className="company-logo" />;
     else if(company.toLowerCase() === 'spotify')
-      return <img src={require('./img/j6.png')} alt="Logo" className="company-logo" />;
+      return <img src={require('./img/j6.png')} alt="spotifyLogo" className="company-logo" />;
     else    
       return null;
   };
