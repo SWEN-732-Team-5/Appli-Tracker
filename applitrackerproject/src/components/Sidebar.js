@@ -78,7 +78,12 @@ const Sidebar = () => {
         <FontAwesomeIcon icon={faHome} className="sidebar-icon" />
         <span className="sidebar-text">Dashboard</span>
       </div>
-      <div className="sidebar-item" onClick={exportToCsv}>
+      <div className="sidebar-item" onClick={exportToCsv}  onKeyDown={(e) => {
+    // Trigger the click event handler when Enter or Space key is pressed
+    if (e.key === 'Enter' || e.key === 'Space') {
+      exportToCsv();
+    }
+  }} >
         <FontAwesomeIcon icon={faUser} className="sidebar-icon" />
         <span className="sidebar-text" >Export Job</span>
       </div>
