@@ -7,7 +7,7 @@ describe('userSignUpController', () => {
         const mockSave = jest.fn().mockReturnValueOnce(Promise.resolve({
             name: 'Swen 732',
             email: 'group5@gmail.com',
-            password: 'Group5Password',
+            userSecKey: '*****',
             _id: expect.anything()
         }));
 
@@ -22,7 +22,7 @@ describe('userSignUpController', () => {
             const testData = {
                 name: 'Swen 732',
                 email: 'group5@gmail.com',
-                password: '*****',
+                userSecKey: '*****',
                 _id: expect.anything()
             };
 
@@ -31,7 +31,7 @@ describe('userSignUpController', () => {
             //Assertions
             expect(savedUser.name).toBe('Swen 732');
             expect(savedUser.email).toBe('group5@gmail.com');
-            expect(savedUser.password).toBe('*****');
+            expect(savedUser.userSecKey).toBe('*****');
 
             expect(mockUserSignUpController).toHaveBeenCalledWith(testData);
     });

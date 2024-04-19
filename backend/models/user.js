@@ -18,7 +18,7 @@ const userCreationSchema = new mongoose.Schema({
             }
         }
     }, 
-    password : {
+    userSecKey : {
         type: String,
         required: true,
         minLength : 7,
