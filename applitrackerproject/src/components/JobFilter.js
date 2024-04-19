@@ -28,14 +28,14 @@ const JobFilter = ({ setFilterType, setFilterValue }) => {
           value={filterBy}
           onChange={(e) => setFilterBy(e.target.value)}
         >
+          <option value="none">--Select a Value--</option>
           <option value="company">Company</option>
-          <option value="title">Title</option>
           <option value="dateApplied">Date Applied</option>
-          <option value="emailFollowup">Email Followup</option>
+          <option value="location">Location</option>
           <option value="appStatus">Application Status</option>
         </select>
       </div>
-      <div className="filter-input" style={{ width: "200px" }}>
+      <div className="filter-input" style={{ width: "600px" }}>
         <input
           type="text"
           value={filter}
