@@ -3,7 +3,9 @@
   flex-direction: column;
   align-items: center; /* Center children horizontally when collapsed */
   width: 50px; /* Width when collapsed */
-  transition: width 0.25s ease-in-out; /* Smooth transition for width */
+  transition: transform 2.5s ease-in-out, opacity 2.5s ease-in-out; /* Animate transform and opacity */
+  transform-origin: left; /* Ensure the scaling happens from the left */
+  background-color: beige;
   /* Add your default styles here */
 }
 
@@ -15,6 +17,7 @@
   position: relative; /* Needed for absolute positioning of child elements */
   width: 100%; /* Ensure items fill the sidebar width */
   min-height: 50px; /* Minimum height for sidebar items to prevent overlap */
+  transition: transform 2.5s ease-in-out, opacity 2.5s ease-in-out; /* Animate transform and opacity */
   /* Add your default styles here */
 }
 
@@ -26,9 +29,17 @@
 
 /* For the profile icon specifically */
 .profile-icon {
-  padding: 5px; /* Padding inside the border */
   width: 34px; /* Width of the icon */
   height: 34px; /* Height of the icon */
+  border-radius: 50%; /* Makes the image circular */
+  object-fit: cover; /* Ensures the image covers the area without being stretched */
+  object-fit: cover; /* Ensures the image covers the area without being stretched */
+  transition: width 0.3s ease, height 0.3s ease, opacity 0.3s ease; /* Smooth transition for size changes */
+}
+
+.sidebar-text, .profile-text {
+  display: none; /* Hide text when sidebar is collapsed */
+  /* Add your default styles here */
 }
 
 /* Increased bottom margin for the profile item to prevent overlap */
@@ -48,10 +59,19 @@
 .sidebar.expanded {
   width: 200px; /* Width when expanded */
   align-items: flex-start; /* Align children to the start when expanded */
+  align-items: flex-start; /* Align children to the start when expanded */
 }
 
-.sidebar.expanded .sidebar-item {
+/* Styles for the hamburger icon specifically */
+.hamburger {
+  justify-content: flex-start; /* Align to start within the item */
+  padding-left: 10px; /* Adjust padding to ensure it is visible when sidebar is collapsed */
+}
+
+.sidebar.expanded .sidebar-item:not(.hamburger){
   justify-content: flex-start; /* Align content to the start (left) when expanded */
+  flex-direction: column; /* Stack elements vertically */
+  align-items: center; /* Center items horizontally */
 }
 
 .sidebar.expanded .sidebar-icon {
@@ -61,8 +81,8 @@
 /* Specific adjustments for the profile icon when expanded */
 .sidebar.expanded .profile-icon {
   font-size: 28px; /* Larger font size for expanded state */
-  width: 48px; /* Increased width for larger icon */
-  height: 48px; /* Increased height for larger icon */
+  width: 70px; /* Increased width for larger icon */
+  height: 70px; /* Increased height for larger icon */
   /* Center the icon within the expanded sidebar */
   margin: 0 auto; /* Auto margins for horizontal centering */
 }
@@ -82,9 +102,75 @@
   text-align: center; /* Center the text */
 }
 
+.sidebar.expanded .profile .profile-icon {
+  margin-bottom: 10px; /* Add some space between the icon and the button */
+}
+
+/* Specific style for when the sidebar is not expanded */
+.sidebar .profile .profile-icon:not(.expanded-icon) {
+  display: none; /* Hide the profile image when not expanded */
+}
+
+.sidebar.expanded .sidebar-text, .sidebar.expanded .profile-text {
+  display: block; /* Show text when expanded */
+  font-size: 18px; /* Larger text size for expanded state */
+  text-align: left; /* Align text to the left */
+}
+
 /* Additional styles to correct the alignment of non-profile items */
 .sidebar.expanded .sidebar-item:not(.profile) .sidebar-icon {
   margin-right: 0; /* Remove right margin if necessary */
+}
+
+/* Style for the Edit Profile button */
+.sidebar-text-button {
+  background: none; /* Remove default button background */
+  border: 1px solid #ccc; /* Add border for the button */
+  border-radius: 5px; /* Optional: rounded corners for the button */
+  padding: 5px 10px; /* Padding inside the button */
+  color: inherit; /* Inherit text color from the sidebar */
+  text-align: center; /* Center the text inside the button */
+  width: auto; /* Do not stretch the button to the full width */
+  cursor: pointer; /* Change mouse cursor to indicate button */
+  display: block; /* Ensure the button takes up its own line */
+  margin: 0 auto; /* Center the button horizontally */
+}
+
+.sidebar-button {
+  background: none; /* Remove default button background */
+  border: none; /* Remove default button border */
+  color: inherit; /* Inherit text color from parent */
+  cursor: pointer; /* Make it look clickable */
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Center button contents */
+  width: 100%;
+  text-align: left;
+  padding: 5px; /* Remove default padding */
+  margin: 0; /* Ensure no margin to keep the layout clean */
+}
+
+/* Styling for buttons when hovered over */
+.sidebar-button:hover, .sidebar-button:focus {
+  background: rgba(68, 68, 68, 0.1); /* Example hover background color */
+  outline: none; /* Remove focus outline */
+}
+
+.sidebar.expanded .sidebar-item.profile .sidebar-button {
+  width: 100%; /* Full width to match the parent’s width */
+  justify-content: center; /* Center button text */
+  padding: 10px 0; /* Padding for larger click area, only vertical */
+}
+
+/* Change the background color on hover for the Edit Profile button */
+.sidebar-text-button:hover {
+  background: #ccc; /* Grey background */
+  color: #333; /* Optionally change the text color to something darker for better contrast */
+}
+
+/* Ensure only the text appears as a button when expanded */
+.sidebar.expanded .sidebar-item:not(.profile) .sidebar-icon {
+  margin-right: 12px; /* Space between icon and text */
 }
 
 /* Ensure non-profile items text is shown and aligned properly when expanded */
@@ -96,4 +182,35 @@
   transform: none; /* Remove any transforms */
   text-align: left; /* Align text to the left */
   margin-left: 12px; /* Space between icon and text */
+}
+
+/* New styles for the Logout button */
+.logout {
+  margin-top: auto; /* Push the logout button to the bottom */
+  margin-bottom: 20px; /* Space from the bottom */
+}
+
+/* Align text next to the icon for expanded state */
+.sidebar.expanded .logout .sidebar-button {
+  justify-content: center;
+}
+
+/* Style the button within the logout item for consistency */
+.sidebar .logout .sidebar-button {
+  width: 100%; /* Full width of the sidebar item */
+  padding: 5px 0; /* Padding for a larger clickable area */
+  color: red;
+}
+
+/* Styling for the logout button when hovered over */
+.sidebar .logout .sidebar-button:hover, 
+.sidebar .logout .sidebar-button:focus {
+  background: rgba(0, 0, 0, 0.1); /* Example hover background color */
+  outline: none; /* Remove focus outline */
+}
+
+/* Styles for the collapsed state */
+.sidebar:not(.expanded) .profile-icon {
+  width: 31.6px; /* Small size */
+  height: 31.6px; /* Small size */
 }

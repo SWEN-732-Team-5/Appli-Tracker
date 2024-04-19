@@ -1,16 +1,28 @@
 import React, { useState } from 'react';
+import Modal from './Modal'; // Make sure to create this component or import from a library
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// Import specific icons from Font Awesome or another icon library
-import { faBars, faHome, faUser, faEnvelope, faUserCircle, faChartBar } from '@fortawesome/free-solid-svg-icons';
+import {faSignOutAlt, faBars, faHome, faUser, faEnvelope, faUserCircle, faChartBar } from '@fortawesome/free-solid-svg-icons';
 import './Sidebar.css';
 import { Link } from "react-router-dom";
+import profileImage from './img/scg_pf1.JPG'; // Adjust the path to where your image is stored
 
 const Sidebar = () => {
   const [isExpanded, setIsExpanded] = useState(false);
+  const [isEditProfileOpen, setIsEditProfileOpen] = useState(false); // Make sure this line is correctly added
+
   const toggleSidebar = () => {
     setIsExpanded(!isExpanded);
   };
 
+  const closeEditProfileModal = () => {
+    setIsEditProfileOpen(false); // Close the modal
+  };
+  
+  // Placeholder function for Logout click action
+  const handleLogoutClick = () => {
+    // Placeholder for your logout functionality
+    console.log("Logout Clicked");
+  };
   const exportToCsv = async () => {
     try {
       const response = await fetch('http://localhost:8000/jobs', {
@@ -56,15 +68,35 @@ const Sidebar = () => {
     }
   };
 
-  // const toggleCalendar = () => {
-  //   setShowCalendar(!showCalendar);
-  // };
-
   
+  const userProfile = {
+    username: 'Shardul',  // Replace with actual username
+    email: 'shardul@gmail.com',  // Replace with actual email
+    location: 'Rochester',  // Replace with actual location
+    profileImage: profileImage,  // This is imported at the top of your file
+  };
+
+  // Placeholder function for Edit Profile click action
+  const handleEditProfileClick = () => {
+    // Opens a new pop-up window. Adjust the URL and window options as needed.
+    setIsEditProfileOpen(true);  // Use the correctly named state setter function
+  };
+
+  // Placeholder function for Dashboard click action
+  const handleDashboardClick = () => {
+    // Placeholder for actual implementation
+    console.log("Dashboard Clicked");
+  };
+
+  // Placeholder function for View Calendar click action
+  const handleViewCalendar = () => {
+    // Placeholder for actual implementation
+    console.log("View Calendar Clicked");
+  };
+
 
   return (
     <div className={`sidebar ${isExpanded ? 'expanded' : ''}`}>
-      {/* This is the hamburger icon item that toggles the sidebar */}
       <div className="sidebar-item hamburger" onClick={toggleSidebar} onKeyDown={(e) => {
     // Trigger the click event handler when Enter or Space key is pressed
     if (e.key === 'Enter' || e.key === 'Space') {
@@ -73,39 +105,72 @@ const Sidebar = () => {
   }}>
         <FontAwesomeIcon icon={faBars} className="sidebar-icon" />
       </div>
-      {/* New profile item with specific styling */}
       <div className="sidebar-item profile">
-        <FontAwesomeIcon icon={faUserCircle} className="sidebar-icon profile-icon" />
-        <span className="sidebar-text profile-text">Edit Profile</span>
+        <img src={profileImage} alt="Profile" className="profile-icon" style={{ display: !isExpanded ? 'block' : 'none' }} />
+      {isExpanded && (
+        <>
+          {/* Large icon only when expanded */}
+          <img src={profileImage} alt="Profile" className="profile-icon expanded-icon" />
+          <button className="sidebar-text-button" onClick={handleEditProfileClick}>
+            Edit Profile
+          </button>
+        </>
+      )}
       </div>
-      {/* Rest of sidebar items */}
-      <div className="sidebar-item">
-        <FontAwesomeIcon icon={faHome} className="sidebar-icon" />
-        <span className="sidebar-text">Dashboard</span>
+      <Modal isOpen={isEditProfileOpen} onClose={closeEditProfileModal} userProfile={userProfile}>
+      {/* Put your edit profile form or content here */}
+      </Modal>
+
+      <Link to="/home_Dashboard"><div className="sidebar-item">
+        <button className="sidebar-button" onClick={handleDashboardClick}>
+          <FontAwesomeIcon icon={faHome} className="sidebar-icon" />
+          <span className="sidebar-text">
+          Dashboard
+        </span>
+        </button>
       </div>
+      </Link>
+
       <div className="sidebar-item" onClick={exportToCsv}  onKeyDown={(e) => {
-    // Trigger the click event handler when Enter or Space key is pressed
-    if (e.key === 'Enter' || e.key === 'Space') {
-      exportToCsv();
-    }
-  }} >
+        if (e.key === 'Enter' || e.key === 'Space') {
+          exportToCsv();
+        }
+      }} >
+        <button className="sidebar-button" onClick={exportToCsv}>
         <FontAwesomeIcon icon={faUser} className="sidebar-icon" />
         <span className="sidebar-text" >Export Job</span>
+        </button>
       </div>
+
       <div className="sidebar-item clickable">
-        <FontAwesomeIcon icon={faEnvelope} className="sidebar-icon" />
-        <span className="sidebar-text">
-        <Link to="/view_calender">View Calendar</Link></span>
+        <button className="sidebar-button" onClick={handleViewCalendar}>
+          <FontAwesomeIcon icon={faEnvelope} className="sidebar-icon" />
+          <span className="sidebar-text">
+            <Link to="/view_calendar" style={{ color: 'black', textDecoration: 'none' }}>
+              View Calendar
+            </Link>
+          </span>
+        </button>
       </div>
+
+
       <div className="sidebar-item">
+      <button className="sidebar-button" onClick={handleViewCalendar}>
         <FontAwesomeIcon icon={faChartBar} className="sidebar-icon" />
         <span className="sidebar-text">
           <Link to="/data_visualize">View Graph</Link>
         </span>
+        </button>
       </div>
-      
-      {/* ... other sidebar items ... */}
+      <div className="sidebar-item logout">
+      <button className="sidebar-button" onClick={handleLogoutClick}>
+        <FontAwesomeIcon icon={faSignOutAlt} className="sidebar-icon" />
+        <span className="sidebar-text">Logout</span>
+      </button>
     </div>
+
+    {/* Include other sidebar items here if any */}
+  </div>
   );
 };
 
