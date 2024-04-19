@@ -22,7 +22,7 @@ describe('userSignUpController', () => {
             const testData = {
                 name: 'Swen 732',
                 email: 'group5@gmail.com',
-                password: 'Group5Password',
+                password: '*****',
                 _id: expect.anything()
             };
 
@@ -31,7 +31,7 @@ describe('userSignUpController', () => {
             //Assertions
             expect(savedUser.name).toBe('Swen 732');
             expect(savedUser.email).toBe('group5@gmail.com');
-            expect(savedUser.password).toBe('Group5Password');
+            expect(savedUser.password).toBe('*****');
 
             expect(mockUserSignUpController).toHaveBeenCalledWith(testData);
     });
