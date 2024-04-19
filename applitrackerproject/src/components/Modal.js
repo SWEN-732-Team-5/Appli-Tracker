@@ -1,21 +1,37 @@
 import React, { useState } from 'react';
 
-const Modal = ({ isOpen, onClose, userProfile }) => {
+const Modal = ({ isOpen, onClose, userProfile: initialUserProfile }) => {
   const [editMode, setEditMode] = useState(false);
+  const [userProfile, setUserProfile] = useState(initialUserProfile);
   const [editedUsername, setEditedUsername] = useState(userProfile.username);
   const [editedLocation, setEditedLocation] = useState(userProfile.location);
   const [editedProfileImage, setEditedProfileImage] = useState(userProfile.profileImage);
 
   if (!isOpen) return null;
 
+  // Define the renderDetail function here
+  const renderDetail = (label, value, editable = false, onChange) => {
+    return editable ? (
+      <input
+        type="text"
+        value={value}
+        onChange={onChange}
+        style={inputStyle}
+      />
+    ) : (
+      // Make sure to use backticks for template literals
+      <div style={detailStyle}>{`${label}: ${value}`}</div>
+    );
+  };
+
   // Handle the profile image change
   const handleProfileImageChange = (e) => {
     const file = e.target.files[0];
-    const reader = new FileReader();
-    reader.onloadend = () => {
-      setEditedProfileImage(reader.result);
-    };
-    if (file) {
+    if (file && file.type.startsWith('image/')) {
+      const reader = new FileReader();
+      reader.onloadend = () => {
+        setEditedProfileImage(reader.result);
+      };
       reader.readAsDataURL(file);
     }
   };
@@ -24,11 +40,21 @@ const Modal = ({ isOpen, onClose, userProfile }) => {
   const saveProfileEdits = () => {
     // Implement how you would save the changes to the user's profile here.
     // For example, you might set the state elsewhere in your app, or make an API call.
+    // Update the userProfile state with the edited values
+    const updatedProfile = {
+      ...userProfile,
+      username: editedUsername,
+      location: editedLocation,
+      profileImage: editedProfileImage,
+    };
 
+    // Replace this with actual API call or state update logic as needed
+    console.log('Updated Profile:', updatedProfile);
+
+    // Update the local state to reflect the edited values
+    setUserProfile(updatedProfile);
     // For now, just log the edited values and close the modal
-    console.log(editedUsername, editedLocation, editedProfileImage);
     setEditMode(false); // Exit edit mode
-    onClose(); // Close the modal
   };
 
   return (
@@ -36,41 +62,41 @@ const Modal = ({ isOpen, onClose, userProfile }) => {
       <div style={modalStyle}>
         {/* User Image */}
         {!editMode ? (
-          <img src={editedProfileImage} alt="Profile" style={profileImageStyle} />
+          <img src={editedProfileImage || editedProfileImage} alt="Profile" style={profileImageStyle} />
         ) : (
-          <input type="file" onChange={handleProfileImageChange} />
+          <input type="file" onChange={handleProfileImageChange} style={inputStyle} />
         )}
 
         {/* User Information */}
-        {!editMode ? (
+        {/* {!editMode ? (
           <div>
             <div style={detailStyle}>Username: {editedUsername}</div>
             <div style={detailStyle}>Email-id: {userProfile.email}</div>
             <div style={detailStyle}>Location: {editedLocation}</div>
           </div>
         ) : (
-            <div>
+          <div>
             <input
-            type="text"
-            value={editedUsername}
-            onChange={(e) => setEditedUsername(e.target.value)}
-            style={inputStyle} // Make sure you define this style
-            />
+              type="text"
+              value={editedUsername}
+              onChange={(e) => setEditedUsername(e.target.value)}
+              style={inputStyle} // Make sure you define this style
+            /> */}
             {/* Email is not editable, so we do not provide an input for it */}
-            <div style={{ ...detailStyle, margin: '20px 0' }}>Email-id: {userProfile.email}</div>
+            {/* <div style={{ ...detailStyle, margin: '20px 0' }}>Email-id: {userProfile.email}</div>
             <input
-            type="text"
-            value={editedLocation}
-            onChange={(e) => setEditedLocation(e.target.value)}
-            style={inputStyle} // Make sure you define this style
+              type="text"
+              value={editedLocation}
+              onChange={(e) => setEditedLocation(e.target.value)}
+              style={inputStyle} // Make sure you define this style
             />
-            <input
-            type="file"
-            onChange={handleProfileImageChange}
-            style={inputStyle} // Make sure you define this style
-            />
-            </div>  
-        )}
+          </div>  
+        )} */}
+        <div>
+          {renderDetail('Username', editedUsername, editMode, (e) => setEditedUsername(e.target.value))}
+          {renderDetail('Email-id', userProfile.email)}
+          {renderDetail('Location', editedLocation, editMode, (e) => setEditedLocation(e.target.value))}
+        </div>
 
         {/* Buttons */}
         <div style={buttonContainerStyle}>

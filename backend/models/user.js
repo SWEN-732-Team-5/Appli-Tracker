@@ -12,23 +12,23 @@ const userCreationSchema = new mongoose.Schema({
         unique : true,
         required : true,
         trim: true,
-        validate(value) {
-            if(!validator.isEmail(value)) {
-                throw new Error('Email is Invalid')
-            }
-        }
+        // validate(value) {
+        //     if(!validator.isEmail(value)) {
+        //         throw new Error('Email is Invalid')
+        //     }
+        // }
     }, 
     userSecKey : {
         type: String,
         required: true,
-        minLength : 7,
+        minLength : 5,
         trim : true,
-        validate(value){
-            if(value.toLowerCase().includes('password')){
-                throw new Error("Password cannot be password!")
-            }
-        }
+        // validate(value){
+        //     if(value.toLowerCase().includes('password')){
+        //         throw new Error("Password cannot be password!")
+        //     }
+        // }
     }
 }) 
 
-module.exports = mongoose.model('userSchema', userCreationSchema)
+module.exports = mongoose.model('userSchema2', userCreationSchema)

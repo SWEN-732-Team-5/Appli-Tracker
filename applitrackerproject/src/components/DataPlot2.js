@@ -32,6 +32,8 @@ const DataPlot2 = ({ data }) => {
             />
         </div>
     );
+
+    
 };
 
 export default DataPlot2;
