@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 // Import specific icons from Font Awesome or another icon library
-import { faBars, faHome, faUser, faEnvelope, faUserCircle } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faHome, faUser, faEnvelope, faUserCircle, faChartBar } from '@fortawesome/free-solid-svg-icons';
 import './Sidebar.css';
+import { Link } from "react-router-dom";
 
 const Sidebar = () => {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -79,6 +80,12 @@ const Sidebar = () => {
       <div className="sidebar-item">
         <FontAwesomeIcon icon={faEnvelope} className="sidebar-icon" />
         <span className="sidebar-text">View Calendar</span>
+      </div>
+      <div className="sidebar-item">
+        <FontAwesomeIcon icon={faChartBar} className="sidebar-icon" />
+        <span className="sidebar-text">
+          <Link to="/data_visualize">View Graph</Link>
+        </span>
       </div>
       {/* ... other sidebar items ... */}
     </div>

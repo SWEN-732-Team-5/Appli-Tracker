@@ -4,7 +4,7 @@ import './App.css';
 import Home from './Home';
 import Login from './Login';
 import SignUp from './SignUp';
-// import Dashboards from './Dashboards';
+import Visualize from './components/Visualize';
 
 function App() {
   //  App.js file added ok
@@ -17,7 +17,7 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<SignUp />} />
             <Route path="/home_dashboard" element={<Home />} />
-            {/* <Route path="/dashboard" element={<Dashboards />} /> */}
+            <Route path="/data_visualize" element={<Visualize />} />
           </Routes>
         </Router>
       </div>
