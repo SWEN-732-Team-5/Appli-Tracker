@@ -22,6 +22,7 @@ const addAttachmentsController = require('./controllers/addAttachmentsController
 const extractAllJobsController = require('./controllers/extractAllJobsController');
 const addTodoController = require('./controllers/addTodoController');
 const monthlyCalendarController = require('./controllers/monthlyCalendarController');
+const userSignUpController = require('./controllers/userSignUpController');
 
 
 mongoose.connect(connectionURL)
@@ -102,3 +103,18 @@ app.get('/monthly_todos', async (req, response) => {
     response.status(200).send(responseData)
 })
 
+//Login, Signup API (Parva)
+
+app.post('/signup', async (req, response) => {
+   
+    console.log("Data that will be created",req.body);
+   const savedUser = await userSignUpController(req.body);
+
+   const responseData = {
+       status: "SUCCESS",
+       status_code: 200,
+       data: savedUser
+     };
+
+   response.status(200).send(responseData)
+})
