@@ -7,7 +7,6 @@ import { Link } from "react-router-dom";
 
 const Sidebar = () => {
   const [isExpanded, setIsExpanded] = useState(false);
-
   const toggleSidebar = () => {
     setIsExpanded(!isExpanded);
   };
@@ -57,6 +56,12 @@ const Sidebar = () => {
     }
   };
 
+  // const toggleCalendar = () => {
+  //   setShowCalendar(!showCalendar);
+  // };
+
+  
+
   return (
     <div className={`sidebar ${isExpanded ? 'expanded' : ''}`}>
       {/* This is the hamburger icon item that toggles the sidebar */}
@@ -77,9 +82,10 @@ const Sidebar = () => {
         <FontAwesomeIcon icon={faUser} className="sidebar-icon" />
         <span className="sidebar-text" >Export Job</span>
       </div>
-      <div className="sidebar-item">
+      <div className="sidebar-item clickable">
         <FontAwesomeIcon icon={faEnvelope} className="sidebar-icon" />
-        <span className="sidebar-text">View Calendar</span>
+        <span className="sidebar-text">
+        <Link to="/view_calender">View Calendar</Link></span>
       </div>
       <div className="sidebar-item">
         <FontAwesomeIcon icon={faChartBar} className="sidebar-icon" />
@@ -87,6 +93,7 @@ const Sidebar = () => {
           <Link to="/data_visualize">View Graph</Link>
         </span>
       </div>
+      
       {/* ... other sidebar items ... */}
     </div>
   );

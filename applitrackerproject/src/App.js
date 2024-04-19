@@ -5,6 +5,7 @@ import Home from './Home';
 import Login from './Login';
 import SignUp from './SignUp';
 import Visualize from './components/Visualize';
+import CV from './components/CV';
 
 function App() {
   //  App.js file added ok
@@ -18,6 +19,7 @@ function App() {
             <Route path="/signup" element={<SignUp />} />
             <Route path="/home_dashboard" element={<Home />} />
             <Route path="/data_visualize" element={<Visualize />} />
+            <Route path="/view_calender" element={<CV />} />
           </Routes>
         </Router>
       </div>
