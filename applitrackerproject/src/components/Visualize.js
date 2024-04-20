@@ -1,7 +1,8 @@
 import React , { useState, useEffect } from 'react';
 import Sidebar from './Sidebar'; // Adjust the path if necessary
 import DataPlot from './DataPlot2'; 
-import JobRolePieChart from './JobRolePieChart'; 
+import JobRolePieChart from './JobRolePieChart';
+import LocationBarChart from './LocationBarChart'; 
 import './Dashboard.css';  // Ensure you have the required CSS
 function Visualize() {
     //  App.js file added ok
@@ -17,6 +18,12 @@ function Visualize() {
         { role: 'Product Manager', count: 70 }
     ];
 
+    const locationData = [
+        { location: 'New York', count: 200 },
+        { location: 'San Francisco', count: 150 },
+        { location: 'Seattle', count: 90 }
+    ];
+
     return (
         <div className="dashboard">
             <Sidebar />
@@ -24,9 +31,11 @@ function Visualize() {
                 <h1>Dashboard</h1>
                 <DataPlot data={sampleData} />
                 <JobRolePieChart data={jobRoleData} />
+                <LocationBarChart data={locationData} />
             </div>
         </div>
     );
+    
 }
     // return (
 
