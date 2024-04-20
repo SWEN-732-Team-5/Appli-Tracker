@@ -3,11 +3,12 @@ import './CalenderView.css';
 
 const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
-function CalendarView({ tasks }) {
+function CalendarView() {
   const [currentDate, setCurrentDate] = useState(new Date());
 
   useEffect(() => {
     renderCalendar();
+    fetchToDo(currentDate.getMonth()+1, currentDate.getFullYear());
   }, [currentDate]); // Dependency on currentDate to re-render
 
   const changeMonth = (months) => {
@@ -17,11 +18,12 @@ function CalendarView({ tasks }) {
     fetchToDo(newDate.getMonth() + 1, newDate.getFullYear()); // Call fetchToDo with updated month and year
   };
 
+  const [taskDetails, setTaskDetail] = useState([]);
   const fetchToDo = async (month, year) => {
     try {
       const monthYear = `${String(month).padStart(2, '0')}/${year}`;
 
-      const response = await fetch('http://localhost:8000/monthly_todos', {
+       const response = await fetch('http://localhost:8000/monthly_todos', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json' // Specify content type as JSON
@@ -32,6 +34,17 @@ function CalendarView({ tasks }) {
           monthyear: monthYear // Use the formatted month/year value
         }),
       });
+
+      if (response.ok) 
+        {
+            const jsonOutput = await response.json();
+            setTaskDetail(jsonOutput);
+        } 
+        else
+        {
+            console.error(`HTTP error: ${response.status}: ${response.statusText}`);
+            setTaskDetail("");
+        }
     } catch (error) {
       console.error('Error fetching jobs:', error);
     }
@@ -47,9 +60,9 @@ function CalendarView({ tasks }) {
     }
 
     for (let day = 1; day <= daysInMonth; day++) {
-      const dateStr = `${currentDate.getFullYear()}-${String(currentDate.getMonth() + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
-      const dayTasks = tasks.filter(task => task.date === dateStr).map(task => (
-        <div className="task">{task.type}: {task.content}</div>
+      const dateStr = `${String(currentDate.getMonth() + 1).padStart(2, '0')}/${String(day).padStart(2, '0')}/${currentDate.getFullYear()}`;
+      const dayTasks = taskDetails.filter(task => task.deadline === dateStr).map(task => (
+        <div className="task">{task.title}: {task.description}</div>
       ));
 
       days.push(

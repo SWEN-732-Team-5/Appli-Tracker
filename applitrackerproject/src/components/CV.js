@@ -1,25 +1,58 @@
-import React , { useState, useEffect } from 'react';
+import React , { useState , useEffect } from 'react';
 import CalendarView from './CalenderView.js';
 import TaskForm from './TaskForm.js';
 import Sidebar from './Sidebar'; // Adjust the path if necessary
 import './Dashboard.css';  // Ensure you have the required CSS
 
 
-function CV() {
-    const [showCalendar, setShowCalendar] = useState(false);
-    // const toggleCalendar = () => {
-    //     setShowCalendar(!showCalendar);
-    //   };
+function Cv() {
+    // const [] = useState(false);
 
-      const [tasks, setTasks] = useState([
-        { date: '2024-04-10', type: 'Meeting', content: 'Project discussion with team.' },
-        { date: '2024-04-15', type: 'Deadline', content: 'Submit project report.' },
-        { date: '2024-04-20', type: 'Event', content: 'Team building event.' }
-      ]);
+      const [tasks, setTasks] = useState([]);
     
       const addTask = (newTask) => {
-        setTasks([...tasks, newTask]);
+        // setTasks([...tasks, newTask]);
       };
+
+      // useEffect(() => {
+      //   fetchToDo();
+      // }, []);
+
+      // const [taskDetails, setTaskDetail] = useState([]);
+      // const fetchToDo = async (month, year) => {
+      //   try {
+      //     // const monthYear = `${String(month).padStart(2, '0')}/${year}`;
+    
+      //      const response = await fetch('http://localhost:8000/monthly_todos', {
+      //       method: 'POST',
+      //       headers: {
+      //         'Content-Type': 'application/json' // Specify content type as JSON
+      //       },
+      //       body: JSON.stringify({ // Convert object to JSON string
+      //         username: 'Manasi',
+      //         email: 'manasi@gmail.com',
+      //         monthyear: '04/2024'
+      //       }),
+      //     });
+    
+      //     if (response.ok) 
+      //       {
+      //           const jsonOutput = await response.json();
+      //           setTasks(jsonOutput);
+      //       } 
+      //       else
+      //       {
+      //           console.error(`HTTP error: ${response.status}: ${response.statusText}`);
+      //           setTasks("");
+      //       }
+      //   } catch (error) {
+      //     console.error('Error fetching jobs:', error);
+      //   }
+      // };
+
+
+
+
     //  App.js file added ok
     return (
 
@@ -28,7 +61,8 @@ function CV() {
             <div className="dashboard-main">
             {/* {showCalendar && ( */}
         <div className="App">
-          <CalendarView tasks={tasks} />
+          {/* <CalendarView tasks={tasks} /> */}
+          <CalendarView />
           <TaskForm addTask={addTask} />
         </div>
       {/* )} */}
@@ -36,4 +70,4 @@ function CV() {
         </div>
     );
 }
-export default CV;
+export default Cv;
