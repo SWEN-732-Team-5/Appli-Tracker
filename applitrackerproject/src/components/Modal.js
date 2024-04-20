@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const Modal = ({ isOpen, onClose, userProfile: initialUserProfile }) => {
+const Modal = ({ isOpen, onClose, userProfile: initialUserProfile, onUpdate }) => {
   const [editMode, setEditMode] = useState(false);
   const [userProfile, setUserProfile] = useState(initialUserProfile);
   const [editedUsername, setEditedUsername] = useState(userProfile.username);
@@ -48,6 +48,13 @@ const Modal = ({ isOpen, onClose, userProfile: initialUserProfile }) => {
       profileImage: editedProfileImage,
     };
 
+    onUpdate({
+      ...userProfile,
+      username: editedUsername,
+      location: editedLocation,
+      profileImage: editedProfileImage,
+    });
+
     // Replace this with actual API call or state update logic as needed
     console.log('Updated Profile:', updatedProfile);
 
@@ -62,36 +69,10 @@ const Modal = ({ isOpen, onClose, userProfile: initialUserProfile }) => {
       <div style={modalStyle}>
         {/* User Image */}
         {!editMode ? (
-          <img src={editedProfileImage || editedProfileImage} alt="Profile" style={profileImageStyle} />
+          <img src={editedProfileImage} alt="Profile" style={profileImageStyle} />
         ) : (
           <input type="file" onChange={handleProfileImageChange} style={inputStyle} />
         )}
-
-        {/* User Information */}
-        {/* {!editMode ? (
-          <div>
-            <div style={detailStyle}>Username: {editedUsername}</div>
-            <div style={detailStyle}>Email-id: {userProfile.email}</div>
-            <div style={detailStyle}>Location: {editedLocation}</div>
-          </div>
-        ) : (
-          <div>
-            <input
-              type="text"
-              value={editedUsername}
-              onChange={(e) => setEditedUsername(e.target.value)}
-              style={inputStyle} // Make sure you define this style
-            /> */}
-            {/* Email is not editable, so we do not provide an input for it */}
-            {/* <div style={{ ...detailStyle, margin: '20px 0' }}>Email-id: {userProfile.email}</div>
-            <input
-              type="text"
-              value={editedLocation}
-              onChange={(e) => setEditedLocation(e.target.value)}
-              style={inputStyle} // Make sure you define this style
-            />
-          </div>  
-        )} */}
         <div>
           {renderDetail('Username', editedUsername, editMode, (e) => setEditedUsername(e.target.value))}
           {renderDetail('Email-id', userProfile.email)}

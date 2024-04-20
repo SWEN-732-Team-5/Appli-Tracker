@@ -9,6 +9,12 @@ import profileImage from './img/scg_pf1.JPG'; // Adjust the path to where your i
 const Sidebar = () => {
   const [isExpanded, setIsExpanded] = useState(false);
   const [isEditProfileOpen, setIsEditProfileOpen] = useState(false); // Make sure this line is correctly added
+  const [userProfile, setUserProfile] = useState({
+    username: 'Shardul',
+    email: 'shardul@gmail.com',
+    location: 'Rochester',
+    profileImage: profileImage,
+  });
 
   const toggleSidebar = () => {
     setIsExpanded(!isExpanded);
@@ -18,6 +24,10 @@ const Sidebar = () => {
     setIsEditProfileOpen(false); // Close the modal
   };
   
+  const handleUserProfileUpdate = (updatedProfile) => {
+    setUserProfile(updatedProfile);
+  };
+
   // Placeholder function for Logout click action
   const handleLogoutClick = () => {
     // Placeholder for your logout functionality
@@ -69,12 +79,12 @@ const Sidebar = () => {
   };
 
   
-  const userProfile = {
-    username: 'Shardul',  // Replace with actual username
-    email: 'shardul@gmail.com',  // Replace with actual email
-    location: 'Rochester',  // Replace with actual location
-    profileImage: profileImage,  // This is imported at the top of your file
-  };
+  // const userProfile = {
+  //   username: 'Shardul',  // Replace with actual username
+  //   email: 'shardul@gmail.com',  // Replace with actual email
+  //   location: 'Rochester',  // Replace with actual location
+  //   profileImage: profileImage,  // This is imported at the top of your file
+  // };
 
   // Placeholder function for Edit Profile click action
   const handleEditProfileClick = () => {
@@ -96,29 +106,45 @@ const Sidebar = () => {
 
 
   return (
-    <div className={`sidebar ${isExpanded ? 'expanded' : ''}`}>
+      <div className={`sidebar ${isExpanded ? 'expanded' : ''}`}>
+      {/* <img src={userProfile.profileImage} alt="Profile" className="profile-icon" /> */}
       <div className="sidebar-item hamburger" onClick={toggleSidebar} onKeyDown={(e) => {
-    // Trigger the click event handler when Enter or Space key is pressed
-    if (e.key === 'Enter' || e.key === 'Space') {
-      toggleSidebar();
-    }
-  }}>
+      // Trigger the click event handler when Enter or Space key is pressed
+        if (e.key === 'Enter' || e.key === 'Space') {
+          toggleSidebar();
+        }
+      }}>
         <FontAwesomeIcon icon={faBars} className="sidebar-icon" />
       </div>
       <div className="sidebar-item profile">
-        <img src={profileImage} alt="Profile" className="profile-icon" style={{ display: !isExpanded ? 'block' : 'none' }} />
+        <img src={userProfile.profileImage} alt="Profile" className="profile-icon" style={{ display: !isExpanded ? 'block' : 'none' }} />
       {isExpanded && (
         <>
           {/* Large icon only when expanded */}
-          <img src={profileImage} alt="Profile" className="profile-icon expanded-icon" />
+          <img src={userProfile.profileImage} alt="Profile" className="profile-icon expanded-icon" />
           <button className="sidebar-text-button" onClick={handleEditProfileClick}>
             Edit Profile
           </button>
         </>
       )}
       </div>
-      <Modal isOpen={isEditProfileOpen} onClose={closeEditProfileModal} userProfile={userProfile}>
+      {/* <Modal isOpen={isEditProfileOpen} onClose={closeEditProfileModal} userProfile={userProfile}> */}
       {/* Put your edit profile form or content here */}
+      {/* </Modal> */}
+
+      <Modal
+      // isOpen={isEditProfileOpen}
+      // onClose={closeEditProfileModal}
+      // userProfile={userProfile}
+      // onUpdate={handleUserProfileUpdate} // Pass the update handler to Modal
+      // >
+      key={userProfile.profileImage} // Add key prop for re-render
+      isOpen={isEditProfileOpen}
+      onClose={closeEditProfileModal}
+      userProfile={userProfile}
+      onUpdate={handleUserProfileUpdate} // Pass the update handler to Modal
+      >
+      {/* Modal content */}
       </Modal>
 
       <div className="sidebar-item">
