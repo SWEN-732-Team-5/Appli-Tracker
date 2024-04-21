@@ -143,27 +143,27 @@ app.post('/applied_date_count', async (req, response) => {
     //     data: getTodos
     //   };
 
-    // const dateCounts = {};
+    const dateCounts = {};
         
-    //     outputData.forEach(data => {
-    //         const date = data.x.substr(0, 10); 
-    //         dateCounts[date] = (dateCounts[date] || 0) + data.y;
-    //     });
+        outputData.forEach(data => {
+            const date = data.x.substr(0, 10); 
+            dateCounts[date] = (dateCounts[date] || 0) + data.y;
+        });
         
-    //     const allDates = Object.keys(dateCounts).sort();
+        const allDates = Object.keys(dateCounts).sort();
         
-    //     const xValues = allDates;
-    //     const yValues = xValues.map(date => dateCounts[date]);
+        const xValues = allDates;
+        const yValues = xValues.map(date => dateCounts[date]);
         
-    //     // Construct the final object in the specified format
-    //     const finalOutput = {
-    //         x: xValues,
-    //         y: yValues
-    //     };
+        // Construct the final object in the specified format
+        const finalOutput = {
+            x: xValues,
+            y: yValues
+        };
         
     //     // console.log(finalOutput);
 
-    response.status(200).send(outputData)
+    response.status(200).send(finalOutput)
  })
 
 app.post('/signup', async (req, response) => {
