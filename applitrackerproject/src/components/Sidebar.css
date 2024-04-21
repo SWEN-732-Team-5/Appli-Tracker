@@ -33,7 +33,6 @@
   height: 34px; /* Height of the icon */
   border-radius: 50%; /* Makes the image circular */
   object-fit: cover; /* Ensures the image covers the area without being stretched */
-  object-fit: cover; /* Ensures the image covers the area without being stretched */
   transition: width 0.3s ease, height 0.3s ease, opacity 0.3s ease; /* Smooth transition for size changes */
 }
 
@@ -58,7 +57,6 @@
 /* Adjustments when the sidebar is expanded */
 .sidebar.expanded {
   width: 200px; /* Width when expanded */
-  align-items: flex-start; /* Align children to the start when expanded */
   align-items: flex-start; /* Align children to the start when expanded */
 }
 
