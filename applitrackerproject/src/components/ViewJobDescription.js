@@ -1,36 +1,114 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 function ViewJobDescription({ job }) {
   const [editMode, setEditMode] = useState(null); // null, 'status', 'priority'
   const [jobDetails, setJobDetails] = useState(job);
+  const [newStage, setNewStage] = useState(job.stage);
+  const [newPriority, setNewPriority] = useState(job.priority); // State to handle the priority
 
+  // Handle change in inputs for stage and priority
   const handleChange = (event) => {
     const { name, value } = event.target;
     setJobDetails((prevJob) => ({
       ...prevJob,
       [name]: value,
     }));
+    if (name === 'stage') {
+      setNewStage(value);
+    }
+    if (name === 'priority') {
+      setNewPriority(value);
+    }
   };
 
+  // Set edit mode
   const startEdit = (mode) => {
     setEditMode(mode);
   };
 
+  // Update stage details when edit mode is closed and stage has changed
+  useEffect(() => {
+    if (editMode === null && newStage !== job.stage) {
+      updateStageDetails();
+    }
+  }, [editMode, newStage, job.stage]);
+
+  // Update priority details when edit mode is closed and priority has changed
+  useEffect(() => {
+    if (editMode === null && newPriority !== job.priority) {
+      updatePriorityDetails();
+    }
+  }, [editMode, newPriority, job.priority]);
+
+  // Save changes and reset edit mode
   const saveChanges = () => {
     setEditMode(null);
-    // TODO: Persist changes
   };
 
+  // Cancel edits and reset state to initial job details
   const cancelEdit = () => {
     setEditMode(null);
-    setJobDetails(job); // Reset changes to initial job details
+    setJobDetails(job);
+    setNewStage(job.stage);
+    setNewPriority(job.priority);
   };
 
+  // Function to update stage details on the server
+  const updateStageDetails = async () => {
+    try {
+      const response = await fetch('http://localhost:8000/update_stage', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          id: job._id,
+          stage: newStage
+        }),
+      });
+
+      if (response.ok) {
+        const jsonOutput = await response.json();
+        console.log("Success: ", jsonOutput);
+      } else {
+        console.error(`HTTP error: ${response.status}: ${response.statusText}`);
+      }
+    } catch (error) {
+      console.error("Network error:", error);
+    }
+  };
+
+  // Function to update priority details on the server
+  const updatePriorityDetails = async () => {
+    try {
+      const response = await fetch('http://localhost:8000/assign_priority', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          id: job._id,
+          priority: newPriority
+        }),
+      });
+
+      if (response.ok) {
+        const jsonOutput = await response.json();
+        console.log("Success: ", jsonOutput);
+      } else {
+        console.error(`HTTP error: ${response.status}: ${response.statusText}`);
+      }
+    } catch (error) {
+      console.error("Network error:", error);
+    }
+  };
+
+  // Style for inputs
   const inputStyle = {
     padding: '8px',
     borderRadius: '4px',
     border: '1px solid #ced4da',
-    marginBottom: '10px', // Added for space between inputs
+    marginBottom: '10px',
   };
 
   return (
@@ -54,19 +132,19 @@ function ViewJobDescription({ job }) {
         </div>
       ) : (
         <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginTop: '10px' }}>
-        {editMode === 'status' && (
-          <select
-            name="stage"
-            value={jobDetails.stage}
-            onChange={handleChange}
-            style={inputStyle}
-          >
-            <option value="Applied">Applied</option>
-            <option value="Interview">Interview</option>
-            <option value="Assessment">Assessment</option>
-            <option value="Reject">Reject</option>
-          </select>
-        )}
+          {editMode === 'status' && (
+            <select
+              name="stage"
+              value={jobDetails.stage}
+              onChange={handleChange}
+              style={inputStyle}
+            >
+              <option value="Applied">Applied</option>
+              <option value="Interview">Interview</option>
+              <option value="Assessment">Assessment</option>
+              <option value="Reject">Reject</option>
+            </select>
+          )}
           {editMode === 'priority' && (
             <select
               name="priority"
@@ -75,7 +153,7 @@ function ViewJobDescription({ job }) {
               style={inputStyle}
             >
               <option value="High">High</option>
-              <option value="Medium">Medium</option>
+              <option value="Intermediate">Intermediate</option>
               <option value="Low">Low</option>
             </select>
           )}
