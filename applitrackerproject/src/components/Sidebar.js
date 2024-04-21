@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import Modal from './Modal'; // Make sure to create this component or import from a library
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {faSignOutAlt, faBars, faHome, faUser, faEnvelope, faUserCircle, faChartBar } from '@fortawesome/free-solid-svg-icons';
+import {faSignOutAlt, faBars, faHome, faChartBar } from '@fortawesome/free-solid-svg-icons';
 import './Sidebar.css';
 import { Link } from "react-router-dom";
-import profileImage from './img/scg_pf1.JPG'; // Adjust the path to where your image is stored
+import profileImage from './img/profile.png'; // Adjust the path to where your image is stored
+import { faFileExport , faCalendarAlt} from '@fortawesome/free-solid-svg-icons';
+
 
 const Sidebar = () => {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -78,15 +80,6 @@ const Sidebar = () => {
     }
   };
 
-  
-  // const userProfile = {
-  //   username: 'Shardul',  // Replace with actual username
-  //   email: 'shardul@gmail.com',  // Replace with actual email
-  //   location: 'Rochester',  // Replace with actual location
-  //   profileImage: profileImage,  // This is imported at the top of your file
-  // };
-
-  // Placeholder function for Edit Profile click action
   const handleEditProfileClick = () => {
     // Opens a new pop-up window. Adjust the URL and window options as needed.
     setIsEditProfileOpen(true);  // Use the correctly named state setter function
@@ -162,14 +155,14 @@ const Sidebar = () => {
         }
       }} >
         <button className="sidebar-button" onClick={exportToCsv}>
-        <FontAwesomeIcon icon={faUser} className="sidebar-icon" />
+        <FontAwesomeIcon icon={faFileExport} className="sidebar-icon" />
         <span className="sidebar-text" >Export Job</span>
         </button>
       </div>
 
     <div className="sidebar-item">
       <button className="sidebar-button" onClick={handleViewCalendar}>
-        <FontAwesomeIcon icon={faEnvelope} className="sidebar-icon" />
+        <FontAwesomeIcon icon={faCalendarAlt} className="sidebar-icon" />
         <span className="sidebar-text"><Link to="/view_calender" style={{ color: 'black', textDecoration: 'none' }}>View Calendar</Link></span>
       </button>
     </div>
