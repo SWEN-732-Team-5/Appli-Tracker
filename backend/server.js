@@ -25,6 +25,7 @@ const monthlyCalendarController = require('./controllers/monthlyCalendarControll
 const userSignUpController = require('./controllers/userSignUpController');
 const applydateCountController = require('./controllers/applydateCountController');
 const roleCountController = require('./controllers/roleCountController');
+const locationCountController = require('./controllers/locationCountController');
 
 
 mongoose.connect(connectionURL)
@@ -170,6 +171,20 @@ app.post('/applied_date_count', async (req, response) => {
  app.post('/role_count', async (req, response) => {
 
     const outputData = await roleCountController(req.body);
+ 
+    // const responseData = {
+    //     status: "SUCCESS",
+    //     status_code: 200,
+    //     data: getTodos
+    //   };
+
+
+    response.status(200).send(outputData)
+ })
+
+ app.post('/location_count', async (req, response) => {
+
+    const outputData = await locationCountController(req.body);
  
     // const responseData = {
     //     status: "SUCCESS",
