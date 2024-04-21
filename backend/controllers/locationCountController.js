@@ -8,7 +8,7 @@ module.exports = async function locationCountController(requestBody) {
             stringifiedBody[key] = String(requestBody[key]);
         }
 
-        const { username, email } = requestBody;
+        const { username, email } = stringifiedBody;
 
         const pipeline = [
             {
