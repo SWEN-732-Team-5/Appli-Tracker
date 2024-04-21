@@ -54,16 +54,19 @@ function ViewJobDescription({ job }) {
         </div>
       ) : (
         <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', marginTop: '10px' }}>
-          {editMode === 'status' && (
-            <input
-              type="text"
-              name="stage"
-              value={jobDetails.stage}
-              onChange={handleChange}
-              style={inputStyle}
-              placeholder="Application Status"
-            />
-          )}
+        {editMode === 'status' && (
+          <select
+            name="stage"
+            value={jobDetails.stage}
+            onChange={handleChange}
+            style={inputStyle}
+          >
+            <option value="Applied">Applied</option>
+            <option value="Interview">Interview</option>
+            <option value="Assessment">Assessment</option>
+            <option value="Reject">Reject</option>
+          </select>
+        )}
           {editMode === 'priority' && (
             <select
               name="priority"

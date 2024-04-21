@@ -151,16 +151,21 @@ const Dashboard = ({ jobs }) => {
                 />
               </Form.Group>
               <Form.Group className="mb-3">
-                <Form.Label>Application Status</Form.Label>
-                <Form.Control 
-                  type="text"
-                  placeholder="Enter application status"
-                  name="appStatus"
-                  value={newJob.stage}
-                  onChange={(e) => setNewJob({ ...newJob, stage: e.target.value })}
-                  required
-                />
-              </Form.Group>
+  <Form.Label>Application Status</Form.Label>
+  <Form.Select 
+    name="appStatus"
+    value={newJob.stage}
+    onChange={(e) => setNewJob({ ...newJob, stage: e.target.value })}
+    required
+  >
+    <option value="">Select status</option>  
+    <option value="Applied">Applied</option>
+    <option value="Interview">Interview</option>
+    <option value="Assessment">Assessment</option>
+    <option value="Reject">Reject</option>
+  </Form.Select>
+</Form.Group>
+
               <Form.Group className="mb-3">
                 <Form.Label>Job Type (Co-op/Intern/Full-time)</Form.Label>
                 <Form.Control 
