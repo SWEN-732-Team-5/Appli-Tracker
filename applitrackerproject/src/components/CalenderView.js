@@ -75,9 +75,11 @@ function CalendarView() {
 
   return (
     <div id="taskCalendar">
-      <button onClick={() => changeMonth(-1)}>Previous</button>
+      <br></br>
+      <button onClick={() => changeMonth(-1)} style={{ marginRight: '10px' }}>Previous</button>
       <button onClick={() => changeMonth(1)}>Next</button>
-      <h2 id="monthLabel">{monthNames[currentDate.getMonth()]} {currentDate.getFullYear()}</h2>
+      <h2 id="monthLabel">      <br></br>
+      {monthNames[currentDate.getMonth()]} {currentDate.getFullYear()}</h2>
       <div id="calendarDays">
         {renderCalendar()}
       </div>
