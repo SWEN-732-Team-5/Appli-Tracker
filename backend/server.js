@@ -24,6 +24,7 @@ const addTodoController = require('./controllers/addTodoController');
 const monthlyCalendarController = require('./controllers/monthlyCalendarController');
 const userSignUpController = require('./controllers/userSignUpController');
 const applydateCountController = require('./controllers/applydateCountController');
+const roleCountController = require('./controllers/roleCountController');
 
 
 mongoose.connect(connectionURL)
@@ -164,6 +165,20 @@ app.post('/applied_date_count', async (req, response) => {
     //     // console.log(finalOutput);
 
     response.status(200).send(finalOutput)
+ })
+
+ app.post('/role_count', async (req, response) => {
+
+    const outputData = await roleCountController(req.body);
+ 
+    // const responseData = {
+    //     status: "SUCCESS",
+    //     status_code: 200,
+    //     data: getTodos
+    //   };
+
+
+    response.status(200).send(outputData)
  })
 
 app.post('/signup', async (req, response) => {

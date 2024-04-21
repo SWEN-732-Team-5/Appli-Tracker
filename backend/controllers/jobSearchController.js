@@ -22,7 +22,7 @@ module.exports = async function jobSearchController(requestBody)
             updatedBody[key] =  stringifiedBody[key];
           }
         }
-        console.log(updatedBody)
+        // console.log(updatedBody)
         const searchResult = await JobCreationSchema.find(updatedBody);
         return searchResult;
     }
