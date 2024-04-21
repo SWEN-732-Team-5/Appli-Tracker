@@ -135,15 +135,35 @@ app.post('/monthly_todos', async (req, response) => {
 
 app.post('/applied_date_count', async (req, response) => {
 
-    const getTodos = await applydateCountController(req.body);
+    const outputData = await applydateCountController(req.body);
  
     // const responseData = {
     //     status: "SUCCESS",
     //     status_code: 200,
     //     data: getTodos
     //   };
- 
-    response.status(200).send(getTodos)
+
+    // const dateCounts = {};
+        
+    //     outputData.forEach(data => {
+    //         const date = data.x.substr(0, 10); 
+    //         dateCounts[date] = (dateCounts[date] || 0) + data.y;
+    //     });
+        
+    //     const allDates = Object.keys(dateCounts).sort();
+        
+    //     const xValues = allDates;
+    //     const yValues = xValues.map(date => dateCounts[date]);
+        
+    //     // Construct the final object in the specified format
+    //     const finalOutput = {
+    //         x: xValues,
+    //         y: yValues
+    //     };
+        
+    //     // console.log(finalOutput);
+
+    response.status(200).send(outputData)
  })
 
 app.post('/signup', async (req, response) => {

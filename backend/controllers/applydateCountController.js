@@ -34,30 +34,7 @@ module.exports = async function applydateCountController(requestBody) {
 
         const outputData = await JobCreationSchema.aggregate(pipeline);
 
-        const dateCounts = {};
-        
-        outputData.forEach(data => {
-            const date = data.x.substr(0, 10); 
-            dateCounts[date] = (dateCounts[date] || 0) + data.y;
-        });
-        
-        const allDates = Object.keys(dateCounts).sort();
-        
-        const xValues = allDates;
-        const yValues = xValues.map(date => dateCounts[date]);
-        
-        // Construct the final object in the specified format
-        const finalOutput = {
-            x: xValues,
-            y: yValues
-        };
-        
-        console.log(finalOutput);
-        
-
-
-        // Return the array of job data
-        return finalOutput;
+        return outputData;
     } catch (error) {
         // Handle any errors that occur during the retrieval process
         // console.error("Error occurred while extracting all job data:", error);
