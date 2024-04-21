@@ -42,6 +42,6 @@ function Home() {
     fetchData();
   }, []);
 
-  return <Dashboard jobs={jobs} />;
+  return <Dashboard jobs={jobs} setJobDetail={setJobDetail} />;
 }
 export default Home;

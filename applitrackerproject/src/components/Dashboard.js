@@ -6,8 +6,10 @@ import JobFilter from './JobFilter';
 import JobList from './JobList';
 import './Dashboard.css';  // Ensure you have the required CSS
 
-const Dashboard = ({ jobs }) => {
+const Dashboard = ({ jobs, setJobDetail }) => {
   const [showModal, setShowModal] = useState(false);
+  const [filterType, setFilterType] = useState('none'); // State for filter type
+  const [filterValue, setFilterValue] = useState(''); // State for filter value
   const [newJob, setNewJob] = useState({
     username: 'Manasi',
     email: 'manasi@gmail.com',
@@ -65,18 +67,123 @@ const Dashboard = ({ jobs }) => {
     }
   };
 
+  const applyFilter = async () => {
+    
+    if (filterType === 'none') {
+      // Handle error or return early
+      return;
+    }
+
+    try {
+      const apiEndpoint = 'http://localhost:8000/searchjob';
+      const response = await fetch(apiEndpoint, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          username: 'Manasi',
+          email: 'manasi@gmail.com',
+          stage: filterType === 'stage' ? filterValue : '',
+          applied_date: filterType === 'applied_date' ? filterValue : '',
+          location: filterType === 'location' ? filterValue : '',
+          job_title: filterType === 'job_title' ? filterValue : '',
+        }),
+      });
+      if (response.ok) {
+        const jsonOutput = await response.json();
+        console.log(jsonOutput);
+        setJobDetail(jsonOutput);
+        // Update job list with filtered results
+      } else {
+        console.error('Failed to fetch filtered jobs');
+      }
+    } catch (error) {
+      console.error('Error fetching filtered jobs:', error);
+    }
+  };
+
+  //Reset filter : 
+  const resetFilter = async () => {
+    setFilterType('none');
+    setFilterValue('');
+    await fetchData(); // Refetch all jobs
+  };
+
+  const fetchData = async () => {
+    try {
+      const response = await fetch('http://localhost:8000/jobs', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          username: 'Manasi',
+          email: 'manasi@gmail.com'
+        }),
+      });
+
+      if (response.ok) {
+        const jsonOutput = await response.json();
+        setJobDetail(jsonOutput);
+      } else {
+        console.error(`HTTP error: ${response.status}: ${response.statusText}`);
+        setJobDetail([]);
+      }
+    } catch (error) {
+      console.error(error);
+      setJobDetail([]);
+    }
+  };
+
   return (
     <div className="dashboard">
-      {/* <Sidebar /> */}
       <Sidebar />
       <div className="dashboard-main">
         <div className="filter-background">
           <br/>
           <p className='projectTitle'>Appli Tracker</p>
           <p className='subTitle'><i>"If opportunity doesn't <b>knock</b>, build a <b>door</b>"</i></p>
-          <JobFilter />
+          {/* <JobFilter />  */}
+
+
+
+          <div className="job-filter">
+            <div className="filter-by">
+              <label htmlFor="filter-by-select">Filter by</label>
+              <select
+                id="filter-by-select"
+                value={filterType}
+                onChange={(e) => setFilterType(e.target.value)}
+                // value={filterBy}
+                // onChange={(e) => setFilterBy(e.target.value)}
+                // onChange={handleFilterType}
+              >
+                <option value="none">--Select a Value--</option>
+                <option value="stage">Status</option>
+                <option value="applied_date">Date Applied</option>
+                <option value="location">Location</option>
+                <option value="job_title">Company</option>
+              </select>
+            </div>
+            <div className="filter-input" style={{ width: "600px" }}>
+              <input
+                type="text"
+                value={filterValue}
+                onChange={(e) => setFilterValue(e.target.value)}
+                placeholder="search for"
+              />
+            </div>
+            <button className="filter-btn" onClick={applyFilter}>
+              Filter
+            </button>
+            <button className="reset-btn" onClick={resetFilter} >
+              Reset Filter
+            </button>
+          </div>
+
         </div>        
-        <JobList jobs={jobs} />
+        <JobList jobs={jobs} /> 
         <Button className="add-job-button" onClick={openModal}>Add Job</Button>
 
         <Modal show={showModal} onHide={closeModal} centered>
