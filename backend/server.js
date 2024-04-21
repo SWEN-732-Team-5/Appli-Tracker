@@ -23,6 +23,7 @@ const extractAllJobsController = require('./controllers/extractAllJobsController
 const addTodoController = require('./controllers/addTodoController');
 const monthlyCalendarController = require('./controllers/monthlyCalendarController');
 const userSignUpController = require('./controllers/userSignUpController');
+const applydateCountController = require('./controllers/applydateCountController');
 
 
 mongoose.connect(connectionURL)
@@ -131,6 +132,19 @@ app.post('/monthly_todos', async (req, response) => {
 
    response.status(200).send(getTodos)
 })
+
+app.post('/applied_date_count', async (req, response) => {
+
+    const getTodos = await applydateCountController(req.body);
+ 
+    // const responseData = {
+    //     status: "SUCCESS",
+    //     status_code: 200,
+    //     data: getTodos
+    //   };
+ 
+    response.status(200).send(getTodos)
+ })
 
 app.post('/signup', async (req, response) => {
    

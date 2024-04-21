@@ -13,7 +13,17 @@ module.exports = async function jobSearchController(requestBody)
           stringifiedBody[key] = String(requestBody[key]);
         }
 
-        const searchResult = await JobCreationSchema.find(stringifiedBody);
+        const updatedBody = {};
+
+        for(const key in stringifiedBody)
+        {
+          if(stringifiedBody[key].length > 0)
+          {
+            updatedBody[key] =  stringifiedBody[key];
+          }
+        }
+        console.log(updatedBody)
+        const searchResult = await JobCreationSchema.find(updatedBody);
         return searchResult;
     }
     catch(error)
