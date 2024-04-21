@@ -3,7 +3,7 @@ import Plot from 'react-plotly.js';
 
 const DataPlot2 = ({ data }) => {
     return (
-        <div>
+        <div><center>
             <h2>Job Application Rate Plot</h2>
             <Plot
                 data={[
@@ -29,7 +29,7 @@ const DataPlot2 = ({ data }) => {
                         showline: false
                     }
                 }}
-            />
+            /></center>
         </div>
     );
 };

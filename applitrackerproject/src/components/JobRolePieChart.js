@@ -18,7 +18,7 @@ const JobRolePieChart = ({ data }) => {
             ]}
             layout={{
                 height: 400,
-                width: 500,
+                width: 720,
                 title: 'Job Application by Role'
             }}
         />

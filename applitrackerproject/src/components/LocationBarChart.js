@@ -30,7 +30,7 @@ const LocationBarChart = ({ data }) => {
                     title: 'Number of Applications'
                 },
                 height: 400,
-                width: 500
+                width: 720
             }}
         />
     );
