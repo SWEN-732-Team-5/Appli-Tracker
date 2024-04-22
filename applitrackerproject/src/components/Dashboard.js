@@ -3,8 +3,14 @@ import { Button, Modal, Form } from 'react-bootstrap';
 import Sidebar from './Sidebar'; // Adjust the path if necessary
 import JobList from './JobList';
 import './Dashboard.css';  // Ensure you have the required CSS
+import PropTypes from 'prop-types';
 
 const Dashboard = ({ jobs, setJobDetail }) => {
+
+  Dashboard.propTypes = {
+    jobs: PropTypes.array.isRequired,
+    setJobDetail: PropTypes.func.isRequired
+  };
   const [showModal, setShowModal] = useState(false);
   const [filterType, setFilterType] = useState('none'); // State for filter type
   const [filterValue, setFilterValue] = useState(''); // State for filter value
