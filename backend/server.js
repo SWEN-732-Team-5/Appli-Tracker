@@ -132,8 +132,8 @@ app.post('/applied_date_count', async (req, response) => {
             dateCounts[date] = (dateCounts[date] || 0) + data.y;
         });
         
-        const allDates = Object.keys(dateCounts).sort();
-        
+        const allDates = Object.keys(dateCounts).sort((a, b) => a.localeCompare(b));
+                
         const xValues = allDates;
         const yValues = xValues.map(date => dateCounts[date]);
         

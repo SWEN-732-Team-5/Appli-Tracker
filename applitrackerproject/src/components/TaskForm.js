@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './TaskForm.css';
+import PropTypes from 'prop-types'; // Import PropTypes
 
 function TaskForm({ addTask }) {
   const [taskDate, setTaskDate] = useState('');
@@ -52,5 +53,8 @@ function TaskForm({ addTask }) {
     </div>
   );
 }
-
+// PropTypes validation
+TaskForm.propTypes = {
+  addTask: PropTypes.func.isRequired,
+};
 export default TaskForm;

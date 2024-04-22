@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
 import Modal from './Modal'; // Make sure to create this component or import from a library
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {faSignOutAlt, faBars, faHome, faChartBar } from '@fortawesome/free-solid-svg-icons';
+import {faSignOutAlt, faBars, faHome, faChartBar, faFileExport , faCalendarAlt } from '@fortawesome/free-solid-svg-icons';
 import './Sidebar.css';
 import { Link } from "react-router-dom";
 import profileImage from './img/profile.png'; // Adjust the path to where your image is stored
-import { faFileExport , faCalendarAlt} from '@fortawesome/free-solid-svg-icons';
-
 
 const Sidebar = () => {
   const [isExpanded, setIsExpanded] = useState(false);

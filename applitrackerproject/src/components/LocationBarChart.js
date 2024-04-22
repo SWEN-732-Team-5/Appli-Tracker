@@ -1,5 +1,6 @@
 import React from 'react';
 import Plot from 'react-plotly.js';
+import PropTypes from 'prop-types'; // Import PropTypes
 
 const LocationBarChart = ({ data }) => {
     const locations = data.map(item => item.location);
@@ -34,6 +35,16 @@ const LocationBarChart = ({ data }) => {
             }}
         />
     );
+};
+
+// PropTypes validation
+LocationBarChart.propTypes = {
+    data: PropTypes.arrayOf(
+        PropTypes.shape({
+            location: PropTypes.string.isRequired,
+            count: PropTypes.number.isRequired
+        })
+    ).isRequired
 };
 
 export default LocationBarChart;

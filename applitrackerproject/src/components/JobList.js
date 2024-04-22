@@ -1,7 +1,7 @@
 import React from 'react';
 import JobCard from './JobCard';
 import './JobList.css';
-
+import PropTypes from 'prop-types'; // Import PropTypes
 
 const JobList = ({ jobs }) => {
   return (
@@ -12,5 +12,12 @@ const JobList = ({ jobs }) => {
     </div>
   );
 };
-
+// PropTypes validation
+JobList.propTypes = {
+  jobs: PropTypes.arrayOf(
+    PropTypes.shape({
+      _id: PropTypes.string.isRequired, 
+    })
+  ).isRequired,
+};
 export default JobList;

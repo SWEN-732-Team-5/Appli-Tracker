@@ -1,5 +1,6 @@
 import React from 'react';
 import Plot from 'react-plotly.js';
+import PropTypes from 'prop-types'; // Import PropTypes
 
 const JobRolePieChart = ({ data }) => {
     const labels = data.map(item => item.role);
@@ -25,4 +26,13 @@ const JobRolePieChart = ({ data }) => {
     );
 };
 
+// PropTypes validation
+JobRolePieChart.propTypes = {
+    data: PropTypes.arrayOf(
+        PropTypes.shape({
+            role: PropTypes.string.isRequired,
+            count: PropTypes.number.isRequired
+        })
+    ).isRequired
+};
 export default JobRolePieChart;

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types'; // Import PropTypes
 
 const Modal = ({ isOpen, onClose, userProfile: initialUserProfile, onUpdate }) => {
   const [editMode, setEditMode] = useState(false);
@@ -99,8 +100,22 @@ const Modal = ({ isOpen, onClose, userProfile: initialUserProfile, onUpdate }) =
   );
 };
 
-// Styles
 
+// PropTypes validation
+Modal.propTypes = {
+  isOpen: PropTypes.bool.isRequired,
+  onClose: PropTypes.func.isRequired,
+  userProfile: PropTypes.shape({
+    username: PropTypes.string.isRequired,
+    location: PropTypes.string.isRequired,
+    profileImage: PropTypes.string.isRequired,
+    email: PropTypes.string.isRequired, // Assuming 'email' is a string, adjust if different
+    // Add additional PropTypes for other properties if needed
+  }).isRequired,
+  onUpdate: PropTypes.func.isRequired,
+};
+
+// Styles
 const inputStyle = {
     width: '100%', // Full-width inputs
     padding: '10px', // Padding for input

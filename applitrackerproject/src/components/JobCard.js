@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Modal, Button } from 'react-bootstrap';
 import './JobCard.css'; // Make sure to update your CSS file accordingly
 import ViewJobDescription from './ViewJobDescription';
+import PropTypes from 'prop-types'; // Import PropTypes
 
 const JobCard = ({ job }) => {
   const [showModal, setShowModal] = useState(false);
@@ -79,6 +80,19 @@ const JobCard = ({ job }) => {
     </div>
     </div>
   );
+};
+
+// PropTypes validation
+JobCard.propTypes = {
+  job: PropTypes.shape({
+    description: PropTypes.string.isRequired,
+    job_title: PropTypes.string.isRequired,
+    payment: PropTypes.number.isRequired,
+    payment_type: PropTypes.string.isRequired,
+    location: PropTypes.string.isRequired,
+    type: PropTypes.string.isRequired,
+    priority: PropTypes.string.isRequired
+  }).isRequired
 };
 
 export default JobCard;

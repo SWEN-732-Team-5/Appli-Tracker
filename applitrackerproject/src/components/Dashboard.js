@@ -353,16 +353,8 @@ const Dashboard = ({ jobs, setJobDetail }) => {
                 <Form.Control
                   type="file"
                   name="attachment"
-                  // onChange={(e) => setNewJob({ ...newJob, attachment: e.target.files[0] })}
-                  // required
                   accept=".pdf,.doc,.docx" // Specify the file types you want to accept
-                  // isInvalid={!!newJob.attachmentError} // Add state logic for attachment error handling
                 />
-                {/* {newJob.attachmentError && (
-                  <Form.Control.Feedback type="invalid">
-                    {newJob.attachmentError}
-                  </Form.Control.Feedback>
-                )} */}
                 <Form.Text className="text-muted">
                   Drop or browse files to upload (Max file size: 64.00 MB)
                 </Form.Text>

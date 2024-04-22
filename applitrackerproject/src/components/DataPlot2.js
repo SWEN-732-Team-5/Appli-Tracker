@@ -1,7 +1,9 @@
 import React from 'react';
 import Plot from 'react-plotly.js';
+import PropTypes from 'prop-types';
 
 const DataPlot2 = ({ data }) => {
+
     return (
         <div><center>
             <h2>Job Application Rate Plot</h2>
@@ -32,6 +34,13 @@ const DataPlot2 = ({ data }) => {
             /></center>
         </div>
     );
+};
+
+DataPlot2.propTypes = {
+    data: PropTypes.shape({
+        x: PropTypes.arrayOf(PropTypes.number).isRequired,
+        y: PropTypes.arrayOf(PropTypes.number).isRequired
+    }).isRequired
 };
 
 export default DataPlot2;
