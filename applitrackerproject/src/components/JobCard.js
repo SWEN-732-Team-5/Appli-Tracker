@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Modal, Button } from 'react-bootstrap';
 import './JobCard.css'; // Make sure to update your CSS file accordingly
 import ViewJobDescription from './ViewJobDescription';
-// import logo from './img/google.png';  // Path to the logo image file
 
 const JobCard = ({ job }) => {
   const [showModal, setShowModal] = useState(false);
@@ -53,7 +52,6 @@ const JobCard = ({ job }) => {
         </div>
       </div>
       <div className="job-description">
-        {/* <p>{job.description}</p> */}
         <p className="job-salary">{job.payment}/{job.payment_type}</p>
         <span><img src={require('./img/loc.png')} alt="Logo" className="location-logo" />{job.location}</span>
       </div>
@@ -61,7 +59,6 @@ const JobCard = ({ job }) => {
         <div className="job-tags">
           <span className="job-type">{job.type}</span>
           <span className={`job-category ${getPriorityClassName(job.priority)}`}>{job.priority}</span>
-          {/* <span className="job-location">{job.location}</span> */}
         </div>
         <div className="salary-apply">
           <Button className="details-button" onClick={handleShowModal}>View Details</Button>

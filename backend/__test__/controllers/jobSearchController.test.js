@@ -31,7 +31,6 @@ test('It should search Job that is Rochester based Location', async () => {
   ]);
 
   expect(searchResult[0].location).toBe('Rochester');
-  // expect(mockFind).toHaveBeenCalledWith(requestBody);
 });
 
 
@@ -64,5 +63,4 @@ test('It should search Job that was created on 02/12/2024 date', async () => {
     ]);
   
     expect(searchResult[0].applied_date).toBe('02/12/2024');
-    // expect(mockFind).toHaveBeenCalledWith(requestBody);
   });

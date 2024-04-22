@@ -40,8 +40,6 @@ describe('applydateCountController', () => {
             }
         ]);
 
-        // expect(mockFind).toHaveBeenCalledWith(requestBody);
-
     });
 });
 

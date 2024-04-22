@@ -37,6 +37,7 @@ function TaskForm({ addTask }) {
           description: taskContent
         }),
       });
+      console.log(response)
     } catch (error) {
       console.error('Error fetching jobs:', error);
     }

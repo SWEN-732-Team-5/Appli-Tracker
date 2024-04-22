@@ -39,9 +39,6 @@ describe('roleCountController', () => {
                 "role": "Product Designer"
             }
         ]);
-
-        // expect(mockFind).toHaveBeenCalledWith(requestBody);
-
     });
 });
 

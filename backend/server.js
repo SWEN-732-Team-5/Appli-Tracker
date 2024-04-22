@@ -53,13 +53,6 @@ app.post('/createjob', async (req, response) => {
 app.post('/searchjob', async (req, response) => {
 
    const searchedJobs = await jobSearchController(req.body);
-  
-   // const responseData = {
-   //     status: "SUCCESS",
-   //     status_code: 200,
-   //     data: searchedJobs
-   //   };
-
    response.status(200).send(searchedJobs)
 })
 
@@ -125,25 +118,12 @@ app.post('/add_todo', async (req, response) => {
 app.post('/monthly_todos', async (req, response) => {
 
    const getTodos = await monthlyCalendarController(req.body);
-
-   // const responseData = {
-   //     status: "SUCCESS",
-   //     status_code: 200,
-   //     data: getTodos
-   //   };
-
    response.status(200).send(getTodos)
 })
 
 app.post('/applied_date_count', async (req, response) => {
 
     const outputData = await applydateCountController(req.body);
- 
-    // const responseData = {
-    //     status: "SUCCESS",
-    //     status_code: 200,
-    //     data: getTodos
-    //   };
 
     const dateCounts = {};
         
@@ -162,37 +142,19 @@ app.post('/applied_date_count', async (req, response) => {
             x: xValues,
             y: yValues
         };
-        
-    //     // console.log(finalOutput);
-
+      
     response.status(200).send(finalOutput)
  })
 
  app.post('/role_count', async (req, response) => {
 
     const outputData = await roleCountController(req.body);
- 
-    // const responseData = {
-    //     status: "SUCCESS",
-    //     status_code: 200,
-    //     data: getTodos
-    //   };
-
-
     response.status(200).send(outputData)
  })
 
  app.post('/location_count', async (req, response) => {
 
     const outputData = await locationCountController(req.body);
- 
-    // const responseData = {
-    //     status: "SUCCESS",
-    //     status_code: 200,
-    //     data: getTodos
-    //   };
-
-
     response.status(200).send(outputData)
  })
 

@@ -6,7 +6,6 @@
   transition: transform 2.5s ease-in-out, opacity 2.5s ease-in-out; /* Animate transform and opacity */
   transform-origin: left; /* Ensure the scaling happens from the left */
   background-color: beige;
-  /* Add your default styles here */
 }
 
 .sidebar-item {
@@ -115,10 +114,6 @@
   text-align: left; /* Align text to the left */
 }
 
-/* Additional styles to correct the alignment of non-profile items */
-.sidebar.expanded .sidebar-item:not(.profile) .sidebar-icon {
-  margin-right: 0; /* Remove right margin if necessary */
-}
 
 /* Style for the Edit Profile button */
 .sidebar-text-button {
@@ -179,6 +174,7 @@
   left: auto; /* Reset any left positioning */
   transform: none; /* Remove any transforms */
   text-align: left; /* Align text to the left */
+  margin-right: 0; /* Remove right margin if necessary */
   margin-left: 12px; /* Space between icon and text */
 }
 

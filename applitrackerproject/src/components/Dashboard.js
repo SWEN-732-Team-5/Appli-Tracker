@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import { Button, Modal, Form } from 'react-bootstrap';
-// import Sidebar from './Sidebar';
 import Sidebar from './Sidebar'; // Adjust the path if necessary
-import JobFilter from './JobFilter';
 import JobList from './JobList';
 import './Dashboard.css';  // Ensure you have the required CSS
 
@@ -144,10 +142,6 @@ const Dashboard = ({ jobs, setJobDetail }) => {
           <br/>
           <p className='projectTitle'>Appli Tracker</p>
           <p className='subTitle'><i>"If opportunity doesn't <b>knock</b>, build a <b>door</b>"</i></p>
-          {/* <JobFilter />  */}
-
-
-
           <div className="job-filter">
             <div className="filter-by">
               <label htmlFor="filter-by-select">Filter by</label>
@@ -155,10 +149,7 @@ const Dashboard = ({ jobs, setJobDetail }) => {
                 id="filter-by-select"
                 value={filterType}
                 onChange={(e) => setFilterType(e.target.value)}
-                // value={filterBy}
-                // onChange={(e) => setFilterBy(e.target.value)}
-                // onChange={handleFilterType}
-              >
+                >
                 <option value="none">--Select a Value--</option>
                 <option value="stage">Status</option>
                 <option value="applied_date">Date Applied</option>

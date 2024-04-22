@@ -19,13 +19,8 @@ html, body {
   padding: 0 20px 20px;
   overflow-y: auto;
   background-image: url('./img/bg.png');
-  /* background-image: 
-  radial-gradient(at top left, #603cf4, transparent),
-  radial-gradient(at top right, #f7ccd3, transparent),
-  radial-gradient(at bottom left, #A7D3F2, transparent);  background-repeat: no-repeat; */
   background-size: cover; /* Cover the entire area */
   background-position: center;
-  /* background: #f0f2f5; */
 }
 
 /* Job filter bar styles */
@@ -66,18 +61,6 @@ html, body {
   margin-top: 20px;
   cursor: pointer;
 }
-/* .job-card {
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 6px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  transition: box-shadow 0.3s;
-}
-
-.job-card:hover {
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-} */
-
 /* Utility and spacing classes */
 .mb-20 {
   margin-bottom: 20px;
@@ -116,11 +99,6 @@ html, body {
   .dashboard {
     flex-direction: column;
   }
-
-  /* .sidebar {
-    width: 100%;
-    margin-bottom: 20px;
-  } */
 
   .dashboard-main {
     padding: 10px;

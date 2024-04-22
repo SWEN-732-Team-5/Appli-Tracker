@@ -7,11 +7,9 @@ function ViewJobDescription({ job }) {
   const [newPriority, setNewPriority] = useState(job.priority); // State to handle the priority
 
   const [selectedFile, setSelectedFile] = useState(null);
-  const [uploadStatus, setUploadStatus] = useState('');
   const [newAttachment, setNewAttachment] = useState(job.attachment);
 
   const fileInputRef = useRef(null);
-
   // Handle change in inputs for stage and priority
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -72,7 +70,6 @@ function ViewJobDescription({ job }) {
     setNewStage(job.stage);
     setNewPriority(job.priority);
     setSelectedFile(null);
-    setUploadStatus('');
     setNewAttachment(job.attachment);
   };
 
@@ -206,13 +203,6 @@ function ViewJobDescription({ job }) {
     marginBottom: '10px', // Add space below each button
   };
   
-  const popupInnerStyle = {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center', // Center buttons horizontally
-    gap: '10px', // Space between elements vertically
-  };
-
   const closeAllPopUps = () => {
     setEditMode(null); // Close the current pop-up
     setJobDetails(job);

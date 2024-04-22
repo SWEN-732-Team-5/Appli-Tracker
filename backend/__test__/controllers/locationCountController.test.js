@@ -38,8 +38,6 @@ describe('locationCountController', () => {
                 "location": "Utah"
             }]);
 
-        // expect(mockFind).toHaveBeenCalledWith(requestBody);
-
     });
 });
 
