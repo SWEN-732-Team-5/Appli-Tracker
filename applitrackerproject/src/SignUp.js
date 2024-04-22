@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { Container, Row, Col, Form, FormGroup, Label, Input, Button, Modal, ModalHeader, ModalBody } from 'reactstrap';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const SignUp = () => {
+  const navigate = useNavigate();
 
   const [newUser, setNewUser] = useState({
     name: '',
@@ -10,7 +11,7 @@ const SignUp = () => {
     userSecKey: ''
   });
   const [confirmPassword, setConfirmPassword] = useState('');
-  const [passwordsMatch, setPasswordsMatch] = useState(true); // New state variable to track password match status
+  const [passwordsMatch, setPasswordsMatch] = useState(true);
   const [modalOpen, setModalOpen] = useState(false);
 
   const toggleModal = () => setModalOpen(!modalOpen);
@@ -18,12 +19,11 @@ const SignUp = () => {
   const signUpUser = async (event) => {
     event.preventDefault();
     if (newUser.userSecKey !== confirmPassword) {
-      // If passwords don't match, update passwordsMatch state and return
       setPasswordsMatch(false);
       return;
     }
-    // If passwords match, proceed with sign-up process
-    const apiEndpoint = 'http://localhost:8000/signup'; // Replace with the actual endpoint
+
+    const apiEndpoint = 'http://localhost:8000/signup';
     const requestOptions = {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -34,12 +34,9 @@ const SignUp = () => {
       const response = await fetch(apiEndpoint, requestOptions);
       const responseData = await response.json();
       if (response.ok) {
-        console.log('User signed up:', responseData);
-        toggleModal(); // Open the success modal
-        // Optionally, you can redirect the user or show a success message here
+        toggleModal();
       } else {
         console.error('Failed to sign up user:', responseData);
-        // Optionally, you can display an error message to the user
       }
     } catch (error) {
       console.error('Failed to send user details:', error);
@@ -47,97 +44,85 @@ const SignUp = () => {
   };
 
   return (
-    <Container>
+    <Container className="mt-5">
       <Row className="justify-content-center">
-        <Col md={6}>
-          <h2 className="mt-4 mb-4">Sign Up</h2>
+        <Col md={6} className="bg-white p-4 rounded shadow-sm">
+          <h2 className="text-center mb-4">Sign Up</h2>
           <Form onSubmit={signUpUser}>
-            <FormGroup row>
-              <Label for="name" sm={3}>
-                Name
-              </Label>
-              <Col sm={9}>
-                <Input
-                  type="text"
-                  name="name"
-                  id="name"
-                  placeholder="Enter your name"
-                  value={newUser.name}
-                  onChange={(e) => setNewUser({ ...newUser, name: e.target.value})}
-                  required
-                />
-              </Col>
+            <FormGroup>
+              <Label for="name">Name</Label>
+              <Input
+                type="text"
+                name="name"
+                id="name"
+                placeholder="Enter your name"
+                value={newUser.name}
+                onChange={(e) => setNewUser({ ...newUser, name: e.target.value })}
+                required
+                className="rounded-pill"
+              />
             </FormGroup>
 
-            <FormGroup row>
-              <Label for="email" sm={3}>
-                Email
-              </Label>
-              <Col sm={9}>
-                <Input
-                  type="email"
-                  name="email"
-                  id="email"
-                  placeholder="Enter your email"
-                  value={newUser.email}
-                  onChange={(e) => setNewUser({ ...newUser, email: e.target.value})}
-                  required
-                />
-              </Col>
-            </FormGroup>
-            
-            <FormGroup row>
-              <Label for="userSecKey" sm={3}>
-                Password
-              </Label>
-              <Col sm={9}>
-                <Input
-                  type="password"
-                  name="userSecKey"
-                  id="userSecKey"
-                  placeholder="Enter your password"
-                  value={newUser.userSecKey}
-                  onChange={(e) => setNewUser({ ...newUser, userSecKey: e.target.value})}
-                  required
-                />
-              </Col>
+            <FormGroup>
+              <Label for="email">Email</Label>
+              <Input
+                type="email"
+                name="email"
+                id="email"
+                placeholder="Enter your email"
+                value={newUser.email}
+                onChange={(e) => setNewUser({ ...newUser, email: e.target.value })}
+                required
+                className="rounded-pill"
+              />
             </FormGroup>
 
-            <FormGroup row>
-              <Label for="confirmPassword" sm={3}>
-                Confirm Password
-              </Label>
-              <Col sm={9}>
-                <Input
-                  type="password"
-                  name="confirmPassword"
-                  id="confirmPassword"
-                  placeholder="Confirm your password"
-                  value={confirmPassword}
-                  onChange={(e) => {
-                    setConfirmPassword(e.target.value);
-                    // Check if passwords match and update passwordsMatch state accordingly
-                    setPasswordsMatch(newUser.userSecKey === e.target.value);
-                  }}
-                  required
-                />
-                {!passwordsMatch && (
-                  <span className="text-danger">Passwords do not match</span>
-                )}
-              </Col>
+            <FormGroup>
+              <Label for="userSecKey">Password</Label>
+              <Input
+                type="password"
+                name="userSecKey"
+                id="userSecKey"
+                placeholder="Enter your password"
+                value={newUser.userSecKey}
+                onChange={(e) => setNewUser({ ...newUser, userSecKey: e.target.value })}
+                required
+                className="rounded-pill"
+              />
             </FormGroup>
 
-            <Button color="primary" type="submit">
+            <FormGroup>
+              <Label for="confirmPassword">Confirm Password</Label>
+              <Input
+                type="password"
+                name="confirmPassword"
+                id="confirmPassword"
+                placeholder="Confirm your password"
+                value={confirmPassword}
+                onChange={(e) => {
+                  setConfirmPassword(e.target.value);
+                  setPasswordsMatch(newUser.userSecKey === e.target.value);
+                }}
+                required
+                className="rounded-pill"
+              />
+              {!passwordsMatch && (
+                <span className="text-danger">Passwords do not match</span>
+              )}
+            </FormGroup>
+
+            <Button color="primary" block className="rounded-pill">
               Sign Up
             </Button>
-
-            <Link to="/login">
-              <Button color="secondary">Log In</Button>
-            </Link>
-
           </Form>
+
+          <div className="mt-3 text-center">
+            Already have an account?{' '}
+            <Link to="/login" className="text-primary">Log In</Link>
+          </div>
         </Col>
       </Row>
+
       <Modal isOpen={modalOpen} toggle={toggleModal}>
         <ModalHeader toggle={toggleModal}>Success</ModalHeader>
         <ModalBody>

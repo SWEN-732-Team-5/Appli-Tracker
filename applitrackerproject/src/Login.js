@@ -3,61 +3,54 @@ import { Container, Row, Col, Form, FormGroup, Label, Input, Button } from 'reac
 import { Link, useNavigate } from "react-router-dom";
 
 const Login = () => {
-  const navigate  = useNavigate (); 
-  
-  const handleSubmit = (event) => {
-    event.preventDefault(); 
+  const navigate = useNavigate();
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
     console.log("Form submitted");
+    // Navigate to the home_dashboard route
     navigate('/home_dashboard');
   };
- 
+
   return (
-    <Container>
+    <Container className="mt-5">
       <Row className="justify-content-center">
-        <Col md={6}>
-          <h2 className="mt-4 mb-4">LogIn</h2>
+        <Col md={6} className="bg-white p-4 rounded shadow-sm">
+          <h2 className="text-center mb-4">Log In</h2>
           <Form onSubmit={handleSubmit}>
-            <FormGroup row>
-              <Label for="email" sm={3}>
-                Email
-              </Label>
-              <Col sm={9}>
-                <Input
-                  type="email"
-                  name="email"
-                  id="email"
-                  placeholder="Enter your email"
-                  required
-                />
-              </Col>
-            </FormGroup>
-            
-            <FormGroup row>
-              <Label for="password" sm={3}>
-                Password
-              </Label>
-              <Col sm={9}>
-                <Input
-                  type="password"
-                  name="password"
-                  id="password"
-                  placeholder="Enter your password"
-                  required
-                />
-              </Col>
+            <FormGroup>
+              <Label for="email">Email</Label>
+              <Input
+                type="email"
+                name="email"
+                id="email"
+                placeholder="Enter your email"
+                required
+                className="rounded-pill"
+              />
             </FormGroup>
 
+            <FormGroup>
+              <Label for="password">Password</Label>
+              <Input
+                type="password"
+                name="password"
+                id="password"
+                placeholder="Enter your password"
+                required
+                className="rounded-pill"
+              />
+            </FormGroup>
 
-            <Button color="primary" type="submit">
-              LogIn
+            <Button color="primary" block className="rounded-pill">
+              Log In
             </Button>
-
-            <Link to="/signup">
-                  <Button color="primary">SignUp</Button>
-            </Link>
-
           </Form>
+
+          <div className="mt-3 text-center">
+            Don't have an account?{' '}
+            <Link to="/signup" className="text-primary">Sign Up</Link>
+          </div>
         </Col>
       </Row>
     </Container>
