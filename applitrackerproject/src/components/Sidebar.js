@@ -144,7 +144,7 @@ const Sidebar = () => {
       {/* Modal content */}
       </Modal>
 
-      <div className="sidebar-item">
+      <div className="sidebar-item" style={{ backgroundColor: 'beige', color: 'black' }}>
         <button className="sidebar-button" onClick={handleDashboardClick}>
           <FontAwesomeIcon icon={faHome} className="sidebar-icon" />
           <span className="sidebar-text">
@@ -153,31 +153,32 @@ const Sidebar = () => {
         </button>
       </div>
 
-      <div
+      <button
         className="sidebar-item"
-        role="button"
+        style={{ backgroundColor: 'beige', color: 'black' }}
         onClick={exportToCsv}
         onKeyDown={(e) => {
           if (e.key === 'Enter' || e.key === ' ') {
-            e.preventDefault();
+            e.preventDefault(); // Prevent default action for Space key (scrolling the page)
             exportToCsv();
           }
         }}
       >
-        <button className="sidebar-button">
+        <div className="sidebar-button" style={{ backgroundColor: 'beige', color: 'black' }}>
           <FontAwesomeIcon icon={faFileExport} className="sidebar-icon" />
           <span className="sidebar-text">Export Job</span>
-        </button>
-      </div>
+        </div>
+      </button>
 
 
-    <div className="sidebar-item">
+
+    <div className="sidebar-item" style={{ backgroundColor: 'beige', color: 'black' }}>
       <button className="sidebar-button" onClick={handleViewCalendar}>
         <FontAwesomeIcon icon={faCalendarAlt} className="sidebar-icon" />
         <span className="sidebar-text"><Link to="/view_calender" style={{ color: 'black', textDecoration: 'none' }}>View Calendar</Link></span>
       </button>
     </div>
-      <div className="sidebar-item">
+      <div className="sidebar-item" style={{ backgroundColor: 'beige', color: 'black' }}>
       <button className="sidebar-button" onClick={handleViewCalendar}>
         <FontAwesomeIcon icon={faChartBar} className="sidebar-icon" />
         <span className="sidebar-text">
