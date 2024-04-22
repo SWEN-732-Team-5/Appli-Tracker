@@ -75,9 +75,9 @@ const Modal = ({ isOpen, onClose, userProfile: initialUserProfile, onUpdate }) =
           <input type="file" onChange={handleProfileImageChange} style={inputStyle} />
         )}
         <div>
-          {renderDetail('Username', editedUsername, editMode, (e) => setEditedUsername(e.target.value))}
+          {renderDetail('Username', editedUsername, (e) => setEditedUsername(e.target.value), editMode)}
           {renderDetail('Email-id', userProfile.email)}
-          {renderDetail('Location', editedLocation, editMode, (e) => setEditedLocation(e.target.value))}
+          {renderDetail('Location', editedLocation, (e) => setEditedLocation(e.target.value), editMode)}
         </div>
 
         {/* Buttons */}
