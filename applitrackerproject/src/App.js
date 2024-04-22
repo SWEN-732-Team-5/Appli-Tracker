@@ -4,9 +4,11 @@ import './App.css';
 import Home from './Home';
 import Login from './Login';
 import SignUp from './SignUp';
+import Visualize from './components/Visualize';
+import Cv from './components/CV';
 
 function App() {
-
+  //  App.js file added ok
   return (
       <div className="App">
         <Router>
@@ -15,7 +17,9 @@ function App() {
             <Route path="/" element={<Login />} />
             <Route path="/login" element={<Login />} />
             <Route path="/signup" element={<SignUp />} />
-            <Route path="/homepage" element={<Home />} />
+            <Route path="/home_dashboard" element={<Home />} />
+            <Route path="/data_visualize" element={<Visualize />} />
+            <Route path="/view_calender" element={<Cv />} />
           </Routes>
         </Router>
       </div>

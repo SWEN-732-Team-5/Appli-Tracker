@@ -22,6 +22,10 @@ const addAttachmentsController = require('./controllers/addAttachmentsController
 const extractAllJobsController = require('./controllers/extractAllJobsController');
 const addTodoController = require('./controllers/addTodoController');
 const monthlyCalendarController = require('./controllers/monthlyCalendarController');
+const userSignUpController = require('./controllers/userSignUpController');
+const applydateCountController = require('./controllers/applydateCountController');
+const roleCountController = require('./controllers/roleCountController');
+const locationCountController = require('./controllers/locationCountController');
 
 
 mongoose.connect(connectionURL)
@@ -34,71 +38,136 @@ mongoose.connect(connectionURL)
 
 app.post('/createjob', async (req, response) => {
    
-     console.log("Data that will be created",req.body);
-    const savedJob = await jobCreateController(req.body);
+    console.log("Data that will be created",req.body);
+   const savedJob = await jobCreateController(req.body);
 
-    const responseData = {
-        status: "SUCCESS",
-        status_code: 200,
-        data: savedJob
-      };
+   const responseData = {
+       status: "SUCCESS",
+       status_code: 200,
+       data: savedJob
+     };
 
-    response.status(200).send(responseData)
+   response.status(200).send(responseData)
 })
 
-app.get('/searchjob', async (req, response) => {
+app.post('/searchjob', async (req, response) => {
 
-    const searchedJobs = await jobSearchController(req.body);
-   
-    const responseData = {
-        status: "SUCCESS",
-        status_code: 200,
-        data: searchedJobs
-      };
-
-    response.status(200).send(responseData)
+   const searchedJobs = await jobSearchController(req.body);
+   response.status(200).send(searchedJobs)
 })
 
 app.post('/assign_priority', async (req, response) => {
 
-    const updatedJob = await assignPriorityController(req.body);
-    response.status(200).send(updatedJob)
+   const updatedJob = await assignPriorityController(req.body);
+
+   const responseData = {
+       status: "SUCCESS",
+       status_code: 200,
+       data: updatedJob
+     };
+
+   response.status(200).send(responseData)
 })
 
 app.post('/update_stage', async (req, response) => {
 
-    const updatedJob = await updateStageController(req.body);
-    response.status(200).send(updatedJob)
+   const updatedJob = await updateStageController(req.body);
+
+   const responseData = {
+       status: "SUCCESS",
+       status_code: 200,
+       data: updatedJob
+     };
+
+   response.status(200).send(responseData)
 })
 
 app.post('/add_attachment', async (req, response) => {
 
-    const updatedJob = await addAttachmentsController(req.body);
-    response.status(200).send(updatedJob)
+   const updatedJob = await addAttachmentsController(req.body);
+
+   const responseData = {
+       status: "SUCCESS",
+       status_code: 200,
+       data: updatedJob
+     };
+
+   response.status(200).send(responseData)
+  
 })
 
-app.get('/jobs', async (req, response) => {
+app.post('/jobs', async (req, response) => {
 
-    const updatedJob = await extractAllJobsController(req.body);
-    response.status(200).send(updatedJob)
+   const updatedJob = await extractAllJobsController(req.body);
+   response.status(200).send(updatedJob)
 })
 
 app.post('/add_todo', async (req, response) => {
 
-    const updatedJob = await addTodoController(req.body);
-    response.status(200).send(updatedJob)
+   const updatedJob = await addTodoController(req.body);
+
+   const responseData = {
+       status: "SUCCESS",
+       status_code: 200,
+       data: updatedJob
+     };
+
+   response.status(200).send(responseData)
 })
 
-app.get('/monthly_todos', async (req, response) => {
+app.post('/monthly_todos', async (req, response) => {
 
-    const getTodos = await monthlyCalendarController(req.body);
-
-    const responseData = {
-        status: "SUCCESS",
-        status_code: 200,
-        data: getTodos
-      };
-
-    response.status(200).send(responseData)
+   const getTodos = await monthlyCalendarController(req.body);
+   response.status(200).send(getTodos)
 })
 
+app.post('/applied_date_count', async (req, response) => {
+
+    const outputData = await applydateCountController(req.body);
+
+    const dateCounts = {};
+        
+        outputData.forEach(data => {
+            const date = data.x.substr(0, 10); 
+            dateCounts[date] = (dateCounts[date] || 0) + data.y;
+        });
+        
+        const allDates = Object.keys(dateCounts).sort((a, b) => a.localeCompare(b));
+                
+        const xValues = allDates;
+        const yValues = xValues.map(date => dateCounts[date]);
+        
+        // Construct the final object in the specified format
+        const finalOutput = {
+            x: xValues,
+            y: yValues
+        };
+      
+    response.status(200).send(finalOutput)
+ })
+
+ app.post('/role_count', async (req, response) => {
+
+    const outputData = await roleCountController(req.body);
+    response.status(200).send(outputData)
+ })
+
+ app.post('/location_count', async (req, response) => {
+
+    const outputData = await locationCountController(req.body);
+    response.status(200).send(outputData)
+ })
+
+app.post('/signup', async (req, response) => {
+   
+    console.log("Data that will be created",req.body);
+   const savedUser = await userSignUpController(req.body);
+
+   const responseData = {
+       status: "SUCCESS",
+       status_code: 200,
+       data: savedUser
+     };
+
+   response.status(200).send(responseData)
+})

@@ -5,6 +5,7 @@ on:
     branches:
       - dev-v2
       - main
+      - frontend-dev-v1
 
 jobs:
   build-node:
