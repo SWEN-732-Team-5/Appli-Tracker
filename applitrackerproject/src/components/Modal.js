@@ -11,7 +11,7 @@ const Modal = ({ isOpen, onClose, userProfile: initialUserProfile, onUpdate }) =
   if (!isOpen) return null;
 
   // Define the renderDetail function here
-  const renderDetail = (label, value, editable = false, onChange) => {
+  const renderDetail = (label, value, onChange, editable = false) => {
     return editable ? (
       <input
         type="text"
@@ -28,7 +28,7 @@ const Modal = ({ isOpen, onClose, userProfile: initialUserProfile, onUpdate }) =
   // Handle the profile image change
   const handleProfileImageChange = (e) => {
     const file = e.target.files[0];
-    if (file && file.type.startsWith('image/')) {
+    if (file?.type?.startsWith('image/')) {
       const reader = new FileReader();
       reader.onloadend = () => {
         setEditedProfileImage(reader.result);

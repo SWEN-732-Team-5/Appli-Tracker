@@ -99,12 +99,19 @@ const Sidebar = () => {
   return (
       <div className={`sidebar ${isExpanded ? 'expanded' : ''}`}>
       {/* <img src={userProfile.profileImage} alt="Profile" className="profile-icon" /> */}
-      <div className="sidebar-item hamburger" onClick={toggleSidebar} onKeyDown={(e) => {
-      // Trigger the click event handler when Enter or Space key is pressed
-        if (e.key === 'Enter' || e.key === 'Space') {
-          toggleSidebar();
-        }
-      }}>
+      <div
+          className="sidebar-item hamburger"
+          role="button" // Add role="button" to indicate it's interactive
+          tabIndex={0} // Add tabIndex={0} to make it focusable
+          onClick={toggleSidebar}
+          onKeyDown={(e) => {
+            // Trigger the click event handler when Enter or Space key is pressed
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault(); // Prevent default action for Space key (scrolling the page)
+              toggleSidebar();
+            }
+          }}
+        >
         <FontAwesomeIcon icon={faBars} className="sidebar-icon" />
       </div>
       <div className="sidebar-item profile">
@@ -147,11 +154,18 @@ const Sidebar = () => {
         </button>
       </div>
 
-      <div className="sidebar-item" onClick={exportToCsv}  onKeyDown={(e) => {
-        if (e.key === 'Enter' || e.key === 'Space') {
-          exportToCsv();
-        }
-      }} >
+      <div
+          className="sidebar-item"
+          role="button"
+          tabIndex={0}
+          onClick={exportToCsv}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              exportToCsv();
+            }
+          }}
+        >
         <button className="sidebar-button" onClick={exportToCsv}>
         <FontAwesomeIcon icon={faFileExport} className="sidebar-icon" />
         <span className="sidebar-text" >Export Job</span>

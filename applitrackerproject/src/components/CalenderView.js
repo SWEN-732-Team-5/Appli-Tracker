@@ -18,7 +18,7 @@ function CalendarView() {
     fetchToDo(newDate.getMonth() + 1, newDate.getFullYear()); // Call fetchToDo with updated month and year
   };
 
-  const [taskDetails, setTaskDetail] = useState([]);
+  const [taskDetails, setTaskDetails] = useState([]);
   const fetchToDo = async (month, year) => {
     try {
       const monthYear = `${String(month).padStart(2, '0')}/${year}`;
@@ -38,12 +38,12 @@ function CalendarView() {
       if (response.ok) 
         {
             const jsonOutput = await response.json();
-            setTaskDetail(jsonOutput);
+            setTaskDetails(jsonOutput);
         } 
         else
         {
             console.error(`HTTP error: ${response.status}: ${response.statusText}`);
-            setTaskDetail("");
+            setTaskDetails("");
         }
     } catch (error) {
       console.error('Error fetching jobs:', error);
@@ -62,7 +62,7 @@ function CalendarView() {
     for (let day = 1; day <= daysInMonth; day++) {
       const dateStr = `${String(currentDate.getMonth() + 1).padStart(2, '0')}/${String(day).padStart(2, '0')}/${currentDate.getFullYear()}`;
       const dayTasks = taskDetails.filter(task => task.deadline === dateStr).map(task => (
-        <div className="task">{task.title}: {task.description}</div>
+        <div className="task" key={task._id}>{task.title}: {task.description}</div>
       ));
 
       days.push(

@@ -214,17 +214,16 @@ function ViewJobDescription({ job }) {
       <h1>Job Details</h1>
       {editMode === 'upload' && (
         <>
-              <div 
-                style={overlayStyle} 
-                onClick={cancelEdit} 
+              <button
+                style={overlayStyle}
+                onClick={cancelEdit}
                 onKeyDown={(event) => {
                   if (event.key === 'Enter' || event.key === ' ') {
                     cancelEdit();
                   }
                 }}
-                role="button" // Add role="button" to indicate the element's purpose
-                tabIndex={0} // Add tabIndex={0} to make the element focusable
-              />            
+                tabIndex={0} // Add tabIndex={0} to make the button focusable
+              ></button>
               <div style={popupStyle}>
               <h2>Upload File</h2>
               <input

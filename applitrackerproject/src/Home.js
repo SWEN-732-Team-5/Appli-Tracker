@@ -5,7 +5,7 @@ import './App.css';
 
 function Home() {
 
-  const [jobs, setJobDetail] = useState([]);
+  const [jobs, setJobs] = useState([]);
 
   const fetchData = async () => {
     try {
@@ -25,16 +25,16 @@ function Home() {
         {
             const jsonOutput = await response.json();
             console.log("hii"+jsonOutput);
-            setJobDetail(jsonOutput);
+            setJobs(jsonOutput);
         } 
         else
         {
             console.error(`HTTP error: ${response.status}: ${response.statusText}`);
-            setJobDetail("");
+            setJobs("");
         }
     } catch (error) {
         console.error(error);
-        setJobDetail("");
+        setJobs("");
     }
   };
 
@@ -42,6 +42,6 @@ function Home() {
     fetchData();
   }, []);
 
-  return <Dashboard jobs={jobs} setJobDetail={setJobDetail} />;
+  return <Dashboard jobs={jobs} setJobDetail={setJobs} />;
 }
 export default Home;
