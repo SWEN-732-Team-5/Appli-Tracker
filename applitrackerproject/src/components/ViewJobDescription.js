@@ -264,17 +264,17 @@ function ViewJobDescription({ job }) {
           <p><strong>Priority Level:</strong> {jobDetails.priority}</p>
           <p><strong>Attachments:</strong></p>
             <ul style={{ padding: '10px', overflow: 'hidden', textOverflow: 'ellipsis' }}>
-              {jobDetails.attachments && jobDetails.attachments.map((attachment, index) => (
-                <li key={index} style={{ 
-                    whiteSpace: 'nowrap', 
-                    overflow: 'hidden', 
-                    textOverflow: 'ellipsis',
-                    width: '100%'  // Ensure the width is set if it's not filling the container
+            {jobDetails.attachments?.map((attachment, index) => (
+                <li key={attachment} style={{ 
+                  whiteSpace: 'nowrap', 
+                  overflow: 'hidden', 
+                  textOverflow: 'ellipsis',
+                  width: '100%'  // Ensure the width is set if it's not filling the container
                 }}>
                   <a href={attachment} target="_blank" rel="noopener noreferrer" style={{
-                      display: 'block', // Makes the anchor fill the li, improving clickable area
-                      overflow: 'hidden',
-                      textOverflow: 'ellipsis'
+                    display: 'block', // Makes the anchor fill the li, improving clickable area
+                    overflow: 'hidden',
+                    textOverflow: 'ellipsis'
                   }}>
                     {attachment}
                   </a>

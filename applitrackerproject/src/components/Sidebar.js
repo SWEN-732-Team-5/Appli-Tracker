@@ -99,21 +99,20 @@ const Sidebar = () => {
   return (
       <div className={`sidebar ${isExpanded ? 'expanded' : ''}`}>
       {/* <img src={userProfile.profileImage} alt="Profile" className="profile-icon" /> */}
-      <div
-          className="sidebar-item hamburger"
-          role="button" // Add role="button" to indicate it's interactive
-          tabIndex={0} // Add tabIndex={0} to make it focusable
-          onClick={toggleSidebar}
-          onKeyDown={(e) => {
-            // Trigger the click event handler when Enter or Space key is pressed
-            if (e.key === 'Enter' || e.key === ' ') {
-              e.preventDefault(); // Prevent default action for Space key (scrolling the page)
-              toggleSidebar();
-            }
-          }}
-        >
+      <button
+        className="sidebar-item hamburger"
+        style={{ backgroundColor: 'beige', color: 'black' }}
+        onClick={toggleSidebar}
+        onKeyDown={(e) => {
+          // Trigger the click event handler when Enter or Space key is pressed
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault(); // Prevent default action for Space key (scrolling the page)
+            toggleSidebar();
+          }
+        }}
+      >
         <FontAwesomeIcon icon={faBars} className="sidebar-icon" />
-      </div>
+      </button>
       <div className="sidebar-item profile">
         <img src={userProfile.profileImage} alt="Profile" className="profile-icon" style={{ display: !isExpanded ? 'block' : 'none' }} />
       {isExpanded && (
@@ -155,22 +154,22 @@ const Sidebar = () => {
       </div>
 
       <div
-          className="sidebar-item"
-          role="button"
-          tabIndex={0}
-          onClick={exportToCsv}
-          onKeyDown={(e) => {
-            if (e.key === 'Enter' || e.key === ' ') {
-              e.preventDefault();
-              exportToCsv();
-            }
-          }}
-        >
-        <button className="sidebar-button" onClick={exportToCsv}>
-        <FontAwesomeIcon icon={faFileExport} className="sidebar-icon" />
-        <span className="sidebar-text" >Export Job</span>
+        className="sidebar-item"
+        tabIndex={0}
+        onClick={exportToCsv}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            exportToCsv();
+          }
+        }}
+      >
+        <button className="sidebar-button">
+          <FontAwesomeIcon icon={faFileExport} className="sidebar-icon" />
+          <span className="sidebar-text">Export Job</span>
         </button>
       </div>
+
 
     <div className="sidebar-item">
       <button className="sidebar-button" onClick={handleViewCalendar}>

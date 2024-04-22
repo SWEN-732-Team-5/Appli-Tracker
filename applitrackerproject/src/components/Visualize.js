@@ -7,8 +7,8 @@ import './Dashboard.css';
 
 function Visualize() {
     // Initialize states with default values
-    const [x1, setPlot1X] = useState([]);
-    const [y1, setPlot1Y] = useState([]);
+    const [x1, setX1] = useState([]);
+    const [y1, setY1] = useState([]);
 
     // Fetch data for the first plot when component mounts
     useEffect(() => {
@@ -28,8 +28,8 @@ function Visualize() {
                 if (response.ok) {
                     const jsonOutput = await response.json();
                     console.log("Success: ", jsonOutput);
-                    setPlot1X(jsonOutput.x);
-                    setPlot1Y(jsonOutput.y);
+                    setX1(jsonOutput.x);
+                    setY1(jsonOutput.y);
                 } else {
                     console.error(`HTTP error: ${response.status}: ${response.statusText}`);
                 }
@@ -46,7 +46,7 @@ function Visualize() {
         y: y1
     };
 
-    const [jobRoleData, plot2value] = useState([]);
+    const [jobRoleData, setJobRoleData] = useState([]);
 
     // Fetch data for the first plot when component mounts
     useEffect(() => {
@@ -66,7 +66,7 @@ function Visualize() {
                 if (response.ok) {
                     const jsonOutput = await response.json();
                     console.log("Success: ", jsonOutput);
-                    plot2value(jsonOutput);
+                    setJobRoleData(jsonOutput);
                 } else {
                     console.error(`HTTP error: ${response.status}: ${response.statusText}`);
                 }
@@ -78,7 +78,7 @@ function Visualize() {
         fetchPlot2Data();
     }, []);
 
-    const [locationData, plot3value] = useState([]);
+    const [locationData, setLocationData] = useState([]);
 
     // Fetch data for the first plot when component mounts
     useEffect(() => {
@@ -98,7 +98,7 @@ function Visualize() {
                 if (response.ok) {
                     const jsonOutput = await response.json();
                     console.log("Success: ", jsonOutput);
-                    plot3value(jsonOutput);
+                    setLocationData(jsonOutput);
                 } else {
                     console.error(`HTTP error: ${response.status}: ${response.statusText}`);
                 }
