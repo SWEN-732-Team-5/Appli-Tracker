@@ -155,7 +155,7 @@ const Sidebar = () => {
 
       <div
         className="sidebar-item"
-        tabIndex={0}
+        role="button"
         onClick={exportToCsv}
         onKeyDown={(e) => {
           if (e.key === 'Enter' || e.key === ' ') {
