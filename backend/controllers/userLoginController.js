@@ -7,7 +7,6 @@ module.exports = async function userLoginController(requestBody)
 
   try {
     const user = await User.findOne({ email, userSecKey });
-   
     if (!user) {
       return {"message" : "INVALID", "data":null};
     }

@@ -38,3 +38,25 @@ test("It should check credentials for users details", async () => {
   });
   
   });
+
+
+
+  //  TEST CASE 
+
+test("It should check credentials for users details for Invalid credentials", async () => {
+
+  const mockFindOne = jest.fn().mockResolvedValueOnce(null
+);
+
+userCreationSchema.findOne = mockFindOne;
+
+  const requestBody = {
+    email:"manasi@gmail.com",
+    userSecKey:"****"
+  };
+  const updatedJob = await userLoginController(requestBody);
+
+  // Assertions
+  expect(updatedJob).toEqual({"message" : "INVALID", "data":null});
+
+});
