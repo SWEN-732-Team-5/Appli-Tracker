@@ -10,7 +10,7 @@ const Login = () => {
 
     const formData = new FormData(event.target);
     const email = formData.get('email');
-    const password = formData.get('password');
+    const userSecKey = formData.get('password');
 
     try {
       const response = await fetch('http://localhost:8000/login', {
@@ -18,7 +18,7 @@ const Login = () => {
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ email, password })
+        body: JSON.stringify({ email, userSecKey })
       });
 
       if (!response.ok) {

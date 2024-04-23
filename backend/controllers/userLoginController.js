@@ -4,11 +4,11 @@ const User = require('../models/user');
 
 module.exports = async function userLoginController(requestBody)
 {
-  const { email, password } = requestBody;
+  const { email, userSecKey } = requestBody;
 
 
   try {
-    const user = await User.findOne({ email, userSecKey: password });
+    const user = await User.findOne({ email, userSecKey });
    
     if (!user) {
       return {"message" : "INVALID", "data":null};
