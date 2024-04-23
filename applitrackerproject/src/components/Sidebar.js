@@ -187,10 +187,10 @@ const Sidebar = () => {
         </button>
       </div>
       <div className="sidebar-item logout">
-      <button className="sidebar-button" onClick={handleLogoutClick}>
+      <Link to="/login" className="sidebar-button" onClick={handleLogoutClick}>
         <FontAwesomeIcon icon={faSignOutAlt} className="sidebar-icon" />
         <span className="sidebar-text">Logout</span>
-      </button>
+      </Link>
     </div>
 
     {/* Include other sidebar items here if any */}
