@@ -26,7 +26,7 @@ const userSignUpController = require('./controllers/userSignUpController');
 const applydateCountController = require('./controllers/applydateCountController');
 const roleCountController = require('./controllers/roleCountController');
 const locationCountController = require('./controllers/locationCountController');
-
+const userLoginController = require('./controllers/userLoginController')
 
 mongoose.connect(connectionURL)
 .then(()=>{
