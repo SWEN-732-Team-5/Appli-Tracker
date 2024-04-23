@@ -10,8 +10,6 @@ module.exports = async function userLoginController(requestBody)
   try {
     const user = await User.findOne({ email, userSecKey: password });
    
-    // console.log("Users details:");
-    // console.log(user);
     if (!user) {
       return {"message" : "INVALID", "data":null};
     }
@@ -25,7 +23,7 @@ module.exports = async function userLoginController(requestBody)
 
     // return res.status(200).json({ message: 'Login successful', user: { email } });
   } catch (error) {
-    console.error('Login error:', error);
-    return {"message" : "INVALID", "data":null};
+    // console.error('Login error:', error);
+    // return {"message" : "INVALID", "data":null};
   }
 }
