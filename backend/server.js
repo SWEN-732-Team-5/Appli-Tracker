@@ -26,6 +26,7 @@ const userSignUpController = require('./controllers/userSignUpController');
 const applydateCountController = require('./controllers/applydateCountController');
 const roleCountController = require('./controllers/roleCountController');
 const locationCountController = require('./controllers/locationCountController');
+const userLoginController = require('./controllers/userLoginController');
 
 
 mongoose.connect(connectionURL)
@@ -175,11 +176,5 @@ app.post('/signup', async (req, response) => {
 app.post('/login', async(req,response) => {
    console.log("User trying to login", req.body);
    const loggedUser = await userLoginController(req.body);
-   const responseData = {
-      status: "SUCCESS",
-      status_code: 200,
-      data: loggedUser 
-   }
-
-   response.status(200).send(responseData)
+   response.status(200).send(loggedUser)
 })

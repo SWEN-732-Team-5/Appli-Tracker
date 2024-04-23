@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Container, Row, Col, Form, FormGroup, Label, Input, Button, Modal, ModalHeader, ModalBody } from 'reactstrap';
 import { Link } from "react-router-dom";
-
+import img from './components/img/bg_login.jpg';
 const SignUp = () => {
 
   const [newUser, setNewUser] = useState({
@@ -49,7 +49,13 @@ const SignUp = () => {
   return (
     <Container>
       <Row className="justify-content-center">
-        <Col md={6}>
+      <Col md={7} className="login-image-container">
+          <br></br>
+          <p style={{textAlign:'center', fontSize:'300%'}}> <b>Appli-Tracker</b></p><br></br>
+          <img src={img} alt="Background" className="login-image" />
+        </Col>
+        
+        <Col md={5}>
           <h2 className="mt-4 mb-4">Sign Up</h2>
           <Form onSubmit={signUpUser}>
             <FormGroup row>
@@ -127,13 +133,17 @@ const SignUp = () => {
               </Col>
             </FormGroup>
 
+            <div className="text-center"> {/* Centering the login button */}
             <Button color="primary" type="submit">
               Sign Up
             </Button>
+            </div>
 
-            <Link to="/login">
-              <Button color="secondary">Log In</Button>
-            </Link>
+
+            <div className="mt-3 text-center">
+              Already have an account?{' '}
+            <Link to="/login" className="text-primary">Login</Link>
+             </div>
 
           </Form>
         </Col>
