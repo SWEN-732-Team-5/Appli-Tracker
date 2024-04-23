@@ -5,12 +5,44 @@ import { Link, useNavigate } from "react-router-dom";
 const Login = () => {
   const navigate  = useNavigate (); 
   
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault(); 
 
-    console.log("Form submitted");
-    navigate('/home_dashboard');
+    const formData = new FormData(event.target);
+    const email = formData.get('email');
+    const password = formData.get('password');
+
+    try {
+      const response = await fetch('http://localhost:8000/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ email, password })
+      });
+
+      if (!response.ok) {
+        alert("Invalid credentials");
+        throw new Error('Login failed');
+      }
+
+      const responsejson = await response.json();
+      console.log(responsejson);
+      if(responsejson.message === "INVALID")
+      {
+        alert("INVALID Credentials");
+      }
+      else 
+      {
+        alert("Login successfull");
+        navigate('/home_dashboard');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      // Handle login failure
+    }
   };
+
  
   return (
     <Container>
